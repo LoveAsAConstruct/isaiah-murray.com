@@ -1,17 +1,18 @@
-<!-- Project.svelte -->
 <script>
   export let project;
-  let showModal = false;
 </script>
 
-<div on:click={() => showModal = true}>
-  {project.title}
-  <!-- more project details -->
+<div class="project-card">
+  <h2>{project.title}</h2>
+  <p>{project.description}</p>
 </div>
 
-{#if showModal}
-<div class="modal">
-  <!-- Modal content -->
-  <button on:click={() => showModal = false}>Close</button>
-</div>
-{/if}
+<style>
+.project-card {
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+</style>

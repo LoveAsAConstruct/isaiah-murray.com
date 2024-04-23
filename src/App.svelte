@@ -1,21 +1,32 @@
 <script>
-  import Header from './components/Header.svelte';
-  import Project from './components/Project.svelte';
-  import Footer from './components/Footer.svelte';
+  import { Router, Route, Link } from 'svelte-routing';
+  import About from './components/About.svelte';
+  import Projects from './components/Projects.svelte';
+  import Contact from './components/Contact.svelte';
 
-  let projects = [
-    { title: 'Project One', description: 'A description of Project One.' },
-    { title: 'Project Two', description: 'A description of Project Two.' }
-  ];
+  // Optional: add other imports if you have more pages or components.
 </script>
-<style>
-  main { padding: 20px; }
-</style>
 
-<Header />
-<main>
-  <h1>Welcome to My Portfolio</h1>
-  {#each projects as project}
-    <Project {project} />
-  {/each}
-</main>
+<Router>
+  <nav>
+    <Link to="/">Home</Link>  <!-- About page as Home -->
+    <Link to="/projects">Projects</Link>
+    <Link to="/contact">Contact</Link>
+  </nav>
+  <div>
+    <Route path="/" component={About} />  <!-- Set About as the root path -->
+    <Route path="/projects" component={Projects} />
+    <Route path="/contact" component={Contact} />
+  </div>
+</Router>
+
+<style>
+  nav a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+</style>
