@@ -2930,6 +2930,7 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "This is the about page where you can put information about yourself or your company.";
     			add_location(h1, file$4, 4, 0, 66);
+    			attr_dev(p, "class", "svelte-17bjde4");
     			add_location(p, file$4, 5, 0, 84);
     		},
     		l: function claim(nodes) {
@@ -3663,6 +3664,7 @@ var app = (function () {
     			create_component(route1.$$.fragment);
     			t4 = space();
     			create_component(route2.$$.fragment);
+    			attr_dev(nav, "class", "svelte-j5cxy0");
     			add_location(nav, file, 10, 2, 316);
     			add_location(div, file, 15, 2, 471);
     		},

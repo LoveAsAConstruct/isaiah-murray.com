@@ -4,3 +4,9 @@
 
 <h1>About Us</h1>
 <p>This is the about page where you can put information about yourself or your company.</p>
+
+<style>
+  p {
+    color: red;
+  }
+</style>
