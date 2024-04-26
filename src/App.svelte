@@ -3,10 +3,8 @@
   import About from './components/About.svelte';
   import Projects from './components/Projects.svelte';
   import Contact from './components/Contact.svelte';
-
   // Optional: add other imports if you have more pages or components.
 </script>
-
 <Router>
   <nav>
     <Link to="/">Home</Link>  <!-- About page as Home -->
@@ -20,16 +18,3 @@
   </div>
 </Router>
 
-<style>
-  nav a {
-    margin-right: 10px;
-    text-decoration: none;
-    color: #333;
-  }
-  nav {
-    color: red;
-  }
-  nav a:hover {
-    text-decoration: underline;
-  }
-</style>
