@@ -80,17 +80,17 @@ button:hover {
   
 
 @media (max-width: 768px) {
-.flex {
-	flex-direction: column;
-}
+	.flex {
+		flex-direction: column;
+	}
 
-.container, nav, button {
-	width: 100%;
-	padding: 0 10px;
-}
+	.container, nav, button {
+		width: 100%;
+		padding: 0 10px;
+	}
 
-h1 {
-	font-size: 1.75rem;
-}
+	h1 {
+		font-size: 1.75rem;
+	}
 }
   
