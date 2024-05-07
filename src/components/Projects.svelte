@@ -26,7 +26,3 @@
     {/if}
   {/each}
 </div>
-
-<style>
-  /* Add styles for your project gallery here */
-</style>

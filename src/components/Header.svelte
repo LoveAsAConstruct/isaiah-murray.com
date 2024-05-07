@@ -13,17 +13,3 @@
     </ul>
   </nav>
 </header>
-<style>
-header {
-  background-color: #333;
-  color: white;
-  padding: 1rem;
-}
-nav ul {
-  list-style-type: none;
-}
-nav ul li {
-  display: inline;
-  margin-right: 20px;
-}
-</style>
