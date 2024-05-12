@@ -1,28 +1,60 @@
 <script>
+  import { onMount } from 'svelte';
   import Project from './Project.svelte';
+  import defaultProjects from './default_projects.json';
 
-  let projects = [
-    { id: 1, title: 'Project One', category: 'Web Development', description: 'Description here...' },
-    { id: 2, title: 'Project Two', category: 'App Development', description: 'Description here...' },
-    { id: 3, title: 'Project Three', category: 'Web Development', description: 'Description here...' },
-    // Add more projects as needed
-  ];
+  let projects = defaultProjects.map(proj => ({
+    id: proj.url,
+    title: proj.title,
+    category: proj.tags,
+    description: 'Description here...',
+    date: proj.date,
+    image: proj.imgSrc
+  }));
 
-  let filter = '';
+  let filters = [];
 
-  function setFilter(category) {
-    filter = category;
+  function toggleFilter(category) {
+    if (filters.includes(category)) {
+      filters = filters.filter(item => item !== category);
+    } else {
+      filters = [...filters, category];
+    }
+    updateProjects();
   }
+
+  function isProjectVisible(project) {
+    return filters.every(filter => project.category.includes(filter));
+  }
+
+  function updateProjects() {
+    projects = defaultProjects
+      .map(proj => ({
+        id: proj.url,
+        title: proj.title,
+        category: proj.tags,
+        description: 'Description here...',
+        date: proj.date,
+        image: proj.imgSrc
+      }))
+      .filter(isProjectVisible);
+  }
+
+  onMount(updateProjects);
 </script>
 
 <div>
-  <button on:click={() => setFilter('')}>All</button>
-  <button on:click={() => setFilter('Web Development')}>Web Development</button>
-  <button on:click={() => setFilter('App Development')}>App Development</button>
+  <label>
+    <input type="checkbox" on:change={() => toggleFilter('digital')} checked={filters.includes('digital')} /> Digital
+  </label>
+  <label>
+    <input type="checkbox" on:change={() => toggleFilter('experiential')} checked={filters.includes('experiential')} /> Experiential
+  </label>
+  <label>
+    <input type="checkbox" on:change={() => toggleFilter('physical')} checked={filters.includes('physical')} /> Physical
+  </label>
 
   {#each projects as project}
-    {#if filter === '' || project.category === filter}
-      <Project {project} />
-    {/if}
+    <Project {project} />
   {/each}
 </div>

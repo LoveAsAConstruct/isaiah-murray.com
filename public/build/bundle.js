@@ -36,6 +36,14 @@ var app = (function () {
     function safe_not_equal(a, b) {
         return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
     }
+    let src_url_equal_anchor;
+    function src_url_equal(element_src, url) {
+        if (!src_url_equal_anchor) {
+            src_url_equal_anchor = document.createElement('a');
+        }
+        src_url_equal_anchor.href = url;
+        return element_src === src_url_equal_anchor.href;
+    }
     function is_empty(obj) {
         return Object.keys(obj).length === 0;
     }
@@ -980,6 +988,10 @@ var app = (function () {
         else
             dispatch_dev('SvelteDOMSetAttribute', { node, attribute, value });
     }
+    function prop_dev(node, property, value) {
+        node[property] = value;
+        dispatch_dev('SvelteDOMSetProperty', { node, property, value });
+    }
     function set_data_dev(text, data) {
         data = '' + data;
         if (text.data === data)
@@ -1616,7 +1628,7 @@ var app = (function () {
     const get_default_slot_context$1 = ctx => ({ params: /*routeParams*/ ctx[2] });
 
     // (42:0) {#if $activeRoute && $activeRoute.route === route}
-    function create_if_block$2(ctx) {
+    function create_if_block$1(ctx) {
     	let current_block_type_index;
     	let if_block;
     	let if_block_anchor;
@@ -1686,7 +1698,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$2.name,
+    		id: create_if_block$1.name,
     		type: "if",
     		source: "(42:0) {#if $activeRoute && $activeRoute.route === route}",
     		ctx
@@ -1965,7 +1977,7 @@ var app = (function () {
     function create_fragment$6(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = /*$activeRoute*/ ctx[1] && /*$activeRoute*/ ctx[1].route === /*route*/ ctx[5] && create_if_block$2(ctx);
+    	let if_block = /*$activeRoute*/ ctx[1] && /*$activeRoute*/ ctx[1].route === /*route*/ ctx[5] && create_if_block$1(ctx);
 
     	const block = {
     		c: function create() {
@@ -1989,7 +2001,7 @@ var app = (function () {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block$2(ctx);
+    					if_block = create_if_block$1(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -2433,7 +2445,7 @@ var app = (function () {
     }
 
     // (134:0) {#if viewtransition}
-    function create_if_block$1(ctx) {
+    function create_if_block(ctx) {
     	let previous_key = /*$location*/ ctx[1].pathname;
     	let key_block_anchor;
     	let current;
@@ -2479,7 +2491,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$1.name,
+    		id: create_if_block.name,
     		type: "if",
     		source: "(134:0) {#if viewtransition}",
     		ctx
@@ -2570,7 +2582,7 @@ var app = (function () {
     	let if_block;
     	let if_block_anchor;
     	let current;
-    	const if_block_creators = [create_if_block$1, create_else_block];
+    	const if_block_creators = [create_if_block, create_else_block];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -2926,35 +2938,570 @@ var app = (function () {
     const file$4 = "src/components/About.svelte";
 
     function create_fragment$4(ctx) {
-    	let h1;
-    	let t1;
-    	let p;
+    	let div14;
+    	let hr0;
+    	let t0;
+    	let h3;
+    	let t2;
+    	let h40;
+    	let t3;
+    	let span;
+    	let a;
+    	let t5;
+    	let h2;
+    	let t7;
+    	let hr1;
+    	let t8;
+    	let h10;
+    	let t10;
+    	let p0;
+    	let t12;
+    	let hr2;
+    	let t13;
+    	let h11;
+    	let t15;
+    	let div9;
+    	let div4;
+    	let div0;
+    	let strong0;
+    	let t17;
+    	let p1;
+    	let em0;
+    	let t19;
+    	let p2;
+    	let t21;
+    	let em1;
+    	let t23;
+    	let div1;
+    	let strong1;
+    	let t25;
+    	let p3;
+    	let em2;
+    	let t27;
+    	let p4;
+    	let t29;
+    	let em3;
+    	let t31;
+    	let div2;
+    	let strong2;
+    	let t33;
+    	let p5;
+    	let em4;
+    	let t35;
+    	let p6;
+    	let t37;
+    	let em5;
+    	let t39;
+    	let div3;
+    	let strong3;
+    	let t41;
+    	let p7;
+    	let em6;
+    	let t43;
+    	let p8;
+    	let t45;
+    	let em7;
+    	let t47;
+    	let div8;
+    	let div5;
+    	let strong4;
+    	let t49;
+    	let p9;
+    	let em8;
+    	let t51;
+    	let p10;
+    	let t53;
+    	let em9;
+    	let t55;
+    	let div6;
+    	let strong5;
+    	let t57;
+    	let p11;
+    	let em10;
+    	let t59;
+    	let p12;
+    	let t61;
+    	let em11;
+    	let t63;
+    	let div7;
+    	let strong6;
+    	let t65;
+    	let p13;
+    	let em12;
+    	let t67;
+    	let p14;
+    	let t69;
+    	let em13;
+    	let t71;
+    	let hr3;
+    	let t72;
+    	let h12;
+    	let t74;
+    	let div13;
+    	let div10;
+    	let h41;
+    	let strong7;
+    	let t76;
+    	let p15;
+    	let t78;
+    	let em14;
+    	let t80;
+    	let div11;
+    	let h42;
+    	let strong8;
+    	let t82;
+    	let p16;
+    	let t84;
+    	let em15;
+    	let t86;
+    	let div12;
+    	let h43;
+    	let strong9;
+    	let t88;
+    	let p17;
+    	let t90;
+    	let em16;
+    	let t92;
+    	let hr4;
+    	let t93;
+    	let h13;
+    	let t95;
+    	let p18;
 
     	const block = {
     		c: function create() {
-    			h1 = element("h1");
-    			h1.textContent = "About Us";
-    			t1 = space();
-    			p = element("p");
-    			p.textContent = "This is the about page where you can put information about yourself or your company.";
-    			add_location(h1, file$4, 4, 0, 66);
-    			add_location(p, file$4, 5, 0, 84);
+    			div14 = element("div");
+    			hr0 = element("hr");
+    			t0 = space();
+    			h3 = element("h3");
+    			h3.textContent = "Isaiah Murray";
+    			t2 = space();
+    			h40 = element("h4");
+    			t3 = text("Student at ");
+    			span = element("span");
+    			a = element("a");
+    			a.textContent = "Nuvu Innovation School";
+    			t5 = space();
+    			h2 = element("h2");
+    			h2.textContent = "My name is Isaiah Murray, I am an aspiring engineer with a love for learning and trying new things!";
+    			t7 = space();
+    			hr1 = element("hr");
+    			t8 = space();
+    			h10 = element("h1");
+    			h10.textContent = "Personal";
+    			t10 = space();
+    			p0 = element("p");
+    			p0.textContent = "I enjoy creating software, generative AI, 3D modeling and visualizations, making things in our workshop and maker space (3D printer, laser cutter, and more), Dungeons and Dragons, math, and anything STEM. I am proficient in C#, Javascript, LaTeX, and Python. My experience includes HTML, C, C++, Java, and TensorFlow. Studied classical guitar from the age of 4 to 14. I love playing squash and rowing.";
+    			t12 = space();
+    			hr2 = element("hr");
+    			t13 = space();
+    			h11 = element("h1");
+    			h11.textContent = "Experience";
+    			t15 = space();
+    			div9 = element("div");
+    			div4 = element("div");
+    			div0 = element("div");
+    			strong0 = element("strong");
+    			strong0.textContent = "MIT CHEM-E: STRANO RESEARCH GROUP";
+    			t17 = space();
+    			p1 = element("p");
+    			em0 = element("em");
+    			em0.textContent = "Laboratory Assistant";
+    			t19 = space();
+    			p2 = element("p");
+    			p2.textContent = "Admitted to the MIT HIP-SAT program where I worked in Professor Michael Strano's lab to refine the power output of thermal resonators. Tested and developed phase change materials (PCMs). Created and delivered the final presentation at the HIP-SAT Symposium, and presented a poster at the Boston Mammalian Synthetic Biology Symposium.";
+    			t21 = space();
+    			em1 = element("em");
+    			em1.textContent = "2023 - 2023";
+    			t23 = space();
+    			div1 = element("div");
+    			strong1 = element("strong");
+    			strong1.textContent = "MATHNASIUM";
+    			t25 = space();
+    			p3 = element("p");
+    			em2 = element("em");
+    			em2.textContent = "Mathematics Tutor";
+    			t27 = space();
+    			p4 = element("p");
+    			p4.textContent = "Applied for and received job as a math tutor at Mathnasium in Cohasset at the age of 14, have tutored there since. Working with children from the 3rd grade to the 8th grade. Working with owner to build life skills beyond tutoring.";
+    			t29 = space();
+    			em3 = element("em");
+    			em3.textContent = "2022 - present";
+    			t31 = space();
+    			div2 = element("div");
+    			strong2 = element("strong");
+    			strong2.textContent = "CHERISH HEALTH";
+    			t33 = space();
+    			p5 = element("p");
+    			em4 = element("em");
+    			em4.textContent = "Machine Learning Intern";
+    			t35 = space();
+    			p6 = element("p");
+    			p6.textContent = "Applied for and received internship at Cherish Health for the summer of 2022. Supported CEO and CTO with user demos in support of their successful Series A investment round. Supported engineering team with machine learning data collection and network training. Developed skills in product demos, CAD, Python, and TensorFlow.";
+    			t37 = space();
+    			em5 = element("em");
+    			em5.textContent = "2022 - 2022";
+    			t39 = space();
+    			div3 = element("div");
+    			strong3 = element("strong");
+    			strong3.textContent = "CSCR";
+    			t41 = space();
+    			p7 = element("p");
+    			em6 = element("em");
+    			em6.textContent = "Student researcher and volunteer - shellfish survey, water quality, drifter teams";
+    			t43 = space();
+    			p8 = element("p");
+    			p8.textContent = "Applied & received Marjot grant to study Zostera marina. Analyzed recovery conditions for Labyrinthula zosterae infected specimens by constructing and testing an automated artificial environment.";
+    			t45 = space();
+    			em7 = element("em");
+    			em7.textContent = "2016 - 2022";
+    			t47 = space();
+    			div8 = element("div");
+    			div5 = element("div");
+    			strong4 = element("strong");
+    			strong4.textContent = "SCRIBBLE WORLDS ACTIVITY BOOK";
+    			t49 = space();
+    			p9 = element("p");
+    			em8 = element("em");
+    			em8.textContent = "Inventor and Co-founder";
+    			t51 = space();
+    			p10 = element("p");
+    			p10.textContent = "Invented Scribble Worlds (www.scribbleworlds.com) with father, combining love of Dungeons and Dragons, Rogue-like adventure games, and video games with love of creating physical objects.  Created a process for laser cutting complex paper shapes to support industrial (well, cottage-industry) production.  Helped create final game and marketing content.  Worked with parents to submit patent and trademark for the business.";
+    			t53 = space();
+    			em9 = element("em");
+    			em9.textContent = "2016 - present";
+    			t55 = space();
+    			div6 = element("div");
+    			strong5 = element("strong");
+    			strong5.textContent = "MEOWGIC CARDS LLC";
+    			t57 = space();
+    			p11 = element("p");
+    			em10 = element("em");
+    			em10.textContent = "Co-founder, Artist, Tester";
+    			t59 = space();
+    			p12 = element("p");
+    			p12.textContent = "Supported creating Meowgic Cards LLC (www.meowgiccards.com), a parody trading card game with four card decks created.  Helped create and review business plan, website content, some artistic content, and test game.";
+    			t61 = space();
+    			em11 = element("em");
+    			em11.textContent = "2020 - present";
+    			t63 = space();
+    			div7 = element("div");
+    			strong6 = element("strong");
+    			strong6.textContent = "FRENCH MEMORIES BAKERY";
+    			t65 = space();
+    			p13 = element("p");
+    			em12 = element("em");
+    			em12.textContent = "Counter Work, Food Service, Kitchen Support";
+    			t67 = space();
+    			p14 = element("p");
+    			p14.textContent = "Worked cash register, filled customer orders, made and served meals, provided general kitchen support.";
+    			t69 = space();
+    			em13 = element("em");
+    			em13.textContent = "2022 - 2022";
+    			t71 = space();
+    			hr3 = element("hr");
+    			t72 = space();
+    			h12 = element("h1");
+    			h12.textContent = "Education";
+    			t74 = space();
+    			div13 = element("div");
+    			div10 = element("div");
+    			h41 = element("h4");
+    			strong7 = element("strong");
+    			strong7.textContent = "NUVU INNOVATION SCHOOL (8th - 12th Grades)";
+    			t76 = space();
+    			p15 = element("p");
+    			p15.textContent = "Project based learning studios and seminars. John’s Hopkins CTY courses in Bio, Chem, AP Chem, and Essay  Writing. Math courses through Art of Problem solving include Intermediate Algebra, Precalculus, AP Calculus. Currently taking multivariable and CS-50 through harvard extension.";
+    			t78 = space();
+    			em14 = element("em");
+    			em14.textContent = "2020 – 2024";
+    			t80 = space();
+    			div11 = element("div");
+    			h42 = element("h4");
+    			strong8 = element("strong");
+    			strong8.textContent = "COHASSET MIDDLE SCHOOL (7th Grade)";
+    			t82 = space();
+    			p16 = element("p");
+    			p16.textContent = "Moved to Cohasset, built strong friendships, earned straight A’s including in extracurricular AoPS Geometry and Intermediate Algebra courses. Tested into Johns Hopkins Center for Talented Youth via their SSAT equivalent.";
+    			t84 = space();
+    			em15 = element("em");
+    			em15.textContent = "2019 – 2020";
+    			t86 = space();
+    			div12 = element("div");
+    			h43 = element("h4");
+    			strong9 = element("strong");
+    			strong9.textContent = "HOME SCHOOL (K-6th Grades)";
+    			t88 = space();
+    			p17 = element("p");
+    			p17.textContent = "My homeschooling experience focused on a solid core of studies around english, science, and math, as well as plenty of free time to focus on my passion around STEM - programming, making, electronics, and more.  ";
+    			t90 = space();
+    			em16 = element("em");
+    			em16.textContent = "2010 – 2019";
+    			t92 = space();
+    			hr4 = element("hr");
+    			t93 = space();
+    			h13 = element("h1");
+    			h13.textContent = "Community";
+    			t95 = space();
+    			p18 = element("p");
+    			p18.textContent = "Member of Cohasset Middle School and High School Robotics teams, Cohasset Maritime Institute Rowing, Cohasset Sailing Club, CSCR, Hingham Sailing Club, Volunteering activities through the Cohasset UU Youth Program.";
+    			add_location(hr0, file$4, 2, 2, 32);
+    			add_location(h3, file$4, 4, 2, 56);
+    			attr_dev(a, "style", "color: #f25d90; !important");
+    			attr_dev(a, "href", "https://cambridge.nuvustudio.com/");
+    			add_location(a, file$4, 5, 59, 140);
+    			attr_dev(span, "style", "color: #f25d90; !important");
+    			add_location(span, file$4, 5, 18, 99);
+    			attr_dev(h40, "class", "svelte-19tqdzw");
+    			add_location(h40, file$4, 5, 2, 83);
+    			add_location(h2, file$4, 6, 2, 262);
+    			add_location(hr1, file$4, 7, 2, 373);
+    			add_location(h10, file$4, 8, 2, 380);
+    			add_location(p0, file$4, 9, 2, 400);
+    			add_location(hr2, file$4, 10, 2, 812);
+    			add_location(h11, file$4, 12, 2, 854);
+    			add_location(strong0, file$4, 16, 14, 971);
+    			attr_dev(em0, "class", "svelte-19tqdzw");
+    			add_location(em0, file$4, 17, 17, 1039);
+    			add_location(p1, file$4, 17, 14, 1036);
+    			add_location(p2, file$4, 18, 14, 1087);
+    			attr_dev(em1, "class", "svelte-19tqdzw");
+    			add_location(em1, file$4, 19, 14, 1443);
+    			attr_dev(div0, "class", "col");
+    			add_location(div0, file$4, 15, 10, 939);
+    			add_location(strong1, file$4, 22, 14, 1523);
+    			attr_dev(em2, "class", "svelte-19tqdzw");
+    			add_location(em2, file$4, 23, 17, 1568);
+    			add_location(p3, file$4, 23, 14, 1565);
+    			add_location(p4, file$4, 24, 14, 1613);
+    			attr_dev(em3, "class", "svelte-19tqdzw");
+    			add_location(em3, file$4, 25, 14, 1865);
+    			attr_dev(div1, "class", "col");
+    			add_location(div1, file$4, 21, 10, 1491);
+    			add_location(strong2, file$4, 28, 14, 1948);
+    			attr_dev(em4, "class", "svelte-19tqdzw");
+    			add_location(em4, file$4, 29, 17, 1997);
+    			add_location(p5, file$4, 29, 14, 1994);
+    			add_location(p6, file$4, 30, 14, 2048);
+    			attr_dev(em5, "class", "svelte-19tqdzw");
+    			add_location(em5, file$4, 31, 14, 2394);
+    			attr_dev(div2, "class", "col");
+    			add_location(div2, file$4, 27, 10, 1916);
+    			add_location(strong3, file$4, 34, 14, 2474);
+    			attr_dev(em6, "class", "svelte-19tqdzw");
+    			add_location(em6, file$4, 35, 17, 2513);
+    			add_location(p7, file$4, 35, 14, 2510);
+    			add_location(p8, file$4, 36, 14, 2622);
+    			attr_dev(em7, "class", "svelte-19tqdzw");
+    			add_location(em7, file$4, 37, 14, 2839);
+    			attr_dev(div3, "class", "col");
+    			add_location(div3, file$4, 33, 10, 2442);
+    			attr_dev(div4, "class", "row mt-3");
+    			add_location(div4, file$4, 14, 6, 906);
+    			add_location(strong4, file$4, 42, 14, 2961);
+    			attr_dev(em8, "class", "svelte-19tqdzw");
+    			add_location(em8, file$4, 43, 17, 3025);
+    			add_location(p9, file$4, 43, 14, 3022);
+    			add_location(p10, file$4, 44, 14, 3076);
+    			attr_dev(em9, "class", "svelte-19tqdzw");
+    			add_location(em9, file$4, 45, 14, 3520);
+    			attr_dev(div5, "class", "col");
+    			add_location(div5, file$4, 41, 10, 2929);
+    			add_location(strong5, file$4, 48, 14, 3603);
+    			attr_dev(em10, "class", "svelte-19tqdzw");
+    			add_location(em10, file$4, 49, 17, 3655);
+    			add_location(p11, file$4, 49, 14, 3652);
+    			add_location(p12, file$4, 50, 14, 3709);
+    			attr_dev(em11, "class", "svelte-19tqdzw");
+    			add_location(em11, file$4, 51, 14, 3944);
+    			attr_dev(div6, "class", "col");
+    			add_location(div6, file$4, 47, 10, 3571);
+    			add_location(strong6, file$4, 54, 14, 4027);
+    			attr_dev(em12, "class", "svelte-19tqdzw");
+    			add_location(em12, file$4, 55, 17, 4084);
+    			add_location(p13, file$4, 55, 14, 4081);
+    			add_location(p14, file$4, 56, 14, 4155);
+    			attr_dev(em13, "class", "svelte-19tqdzw");
+    			add_location(em13, file$4, 57, 14, 4279);
+    			attr_dev(div7, "class", "col");
+    			add_location(div7, file$4, 53, 10, 3995);
+    			attr_dev(div8, "class", "row mt-3");
+    			add_location(div8, file$4, 40, 6, 2896);
+    			attr_dev(div9, "class", "container");
+    			add_location(div9, file$4, 13, 2, 876);
+    			add_location(hr3, file$4, 61, 2, 4341);
+    			add_location(h12, file$4, 63, 2, 4382);
+    			add_location(strong7, file$4, 66, 14, 4474);
+    			attr_dev(h41, "class", "svelte-19tqdzw");
+    			add_location(h41, file$4, 66, 10, 4470);
+    			add_location(p15, file$4, 67, 10, 4549);
+    			attr_dev(em14, "class", "svelte-19tqdzw");
+    			add_location(em14, file$4, 68, 10, 4849);
+    			attr_dev(div10, "class", "col");
+    			add_location(div10, file$4, 65, 6, 4442);
+    			add_location(strong8, file$4, 71, 14, 4921);
+    			attr_dev(h42, "class", "svelte-19tqdzw");
+    			add_location(h42, file$4, 71, 10, 4917);
+    			add_location(p16, file$4, 72, 10, 4989);
+    			attr_dev(em15, "class", "svelte-19tqdzw");
+    			add_location(em15, file$4, 73, 10, 5227);
+    			attr_dev(div11, "class", "col");
+    			add_location(div11, file$4, 70, 6, 4889);
+    			add_location(strong9, file$4, 76, 14, 5299);
+    			attr_dev(h43, "class", "svelte-19tqdzw");
+    			add_location(h43, file$4, 76, 10, 5295);
+    			add_location(p17, file$4, 77, 10, 5358);
+    			attr_dev(em16, "class", "svelte-19tqdzw");
+    			add_location(em16, file$4, 78, 10, 5587);
+    			attr_dev(div12, "class", "col");
+    			add_location(div12, file$4, 75, 6, 5267);
+    			attr_dev(div13, "class", "row container mt-3");
+    			add_location(div13, file$4, 64, 2, 4403);
+    			add_location(hr4, file$4, 81, 2, 5632);
+    			add_location(h13, file$4, 83, 2, 5668);
+    			add_location(p18, file$4, 84, 2, 5689);
+    			attr_dev(div14, "class", "container mt-5");
+    			add_location(div14, file$4, 1, 0, 1);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, h1, anchor);
-    			insert_dev(target, t1, anchor);
-    			insert_dev(target, p, anchor);
+    			insert_dev(target, div14, anchor);
+    			append_dev(div14, hr0);
+    			append_dev(div14, t0);
+    			append_dev(div14, h3);
+    			append_dev(div14, t2);
+    			append_dev(div14, h40);
+    			append_dev(h40, t3);
+    			append_dev(h40, span);
+    			append_dev(span, a);
+    			append_dev(div14, t5);
+    			append_dev(div14, h2);
+    			append_dev(div14, t7);
+    			append_dev(div14, hr1);
+    			append_dev(div14, t8);
+    			append_dev(div14, h10);
+    			append_dev(div14, t10);
+    			append_dev(div14, p0);
+    			append_dev(div14, t12);
+    			append_dev(div14, hr2);
+    			append_dev(div14, t13);
+    			append_dev(div14, h11);
+    			append_dev(div14, t15);
+    			append_dev(div14, div9);
+    			append_dev(div9, div4);
+    			append_dev(div4, div0);
+    			append_dev(div0, strong0);
+    			append_dev(div0, t17);
+    			append_dev(div0, p1);
+    			append_dev(p1, em0);
+    			append_dev(div0, t19);
+    			append_dev(div0, p2);
+    			append_dev(div0, t21);
+    			append_dev(div0, em1);
+    			append_dev(div4, t23);
+    			append_dev(div4, div1);
+    			append_dev(div1, strong1);
+    			append_dev(div1, t25);
+    			append_dev(div1, p3);
+    			append_dev(p3, em2);
+    			append_dev(div1, t27);
+    			append_dev(div1, p4);
+    			append_dev(div1, t29);
+    			append_dev(div1, em3);
+    			append_dev(div4, t31);
+    			append_dev(div4, div2);
+    			append_dev(div2, strong2);
+    			append_dev(div2, t33);
+    			append_dev(div2, p5);
+    			append_dev(p5, em4);
+    			append_dev(div2, t35);
+    			append_dev(div2, p6);
+    			append_dev(div2, t37);
+    			append_dev(div2, em5);
+    			append_dev(div4, t39);
+    			append_dev(div4, div3);
+    			append_dev(div3, strong3);
+    			append_dev(div3, t41);
+    			append_dev(div3, p7);
+    			append_dev(p7, em6);
+    			append_dev(div3, t43);
+    			append_dev(div3, p8);
+    			append_dev(div3, t45);
+    			append_dev(div3, em7);
+    			append_dev(div9, t47);
+    			append_dev(div9, div8);
+    			append_dev(div8, div5);
+    			append_dev(div5, strong4);
+    			append_dev(div5, t49);
+    			append_dev(div5, p9);
+    			append_dev(p9, em8);
+    			append_dev(div5, t51);
+    			append_dev(div5, p10);
+    			append_dev(div5, t53);
+    			append_dev(div5, em9);
+    			append_dev(div8, t55);
+    			append_dev(div8, div6);
+    			append_dev(div6, strong5);
+    			append_dev(div6, t57);
+    			append_dev(div6, p11);
+    			append_dev(p11, em10);
+    			append_dev(div6, t59);
+    			append_dev(div6, p12);
+    			append_dev(div6, t61);
+    			append_dev(div6, em11);
+    			append_dev(div8, t63);
+    			append_dev(div8, div7);
+    			append_dev(div7, strong6);
+    			append_dev(div7, t65);
+    			append_dev(div7, p13);
+    			append_dev(p13, em12);
+    			append_dev(div7, t67);
+    			append_dev(div7, p14);
+    			append_dev(div7, t69);
+    			append_dev(div7, em13);
+    			append_dev(div14, t71);
+    			append_dev(div14, hr3);
+    			append_dev(div14, t72);
+    			append_dev(div14, h12);
+    			append_dev(div14, t74);
+    			append_dev(div14, div13);
+    			append_dev(div13, div10);
+    			append_dev(div10, h41);
+    			append_dev(h41, strong7);
+    			append_dev(div10, t76);
+    			append_dev(div10, p15);
+    			append_dev(div10, t78);
+    			append_dev(div10, em14);
+    			append_dev(div13, t80);
+    			append_dev(div13, div11);
+    			append_dev(div11, h42);
+    			append_dev(h42, strong8);
+    			append_dev(div11, t82);
+    			append_dev(div11, p16);
+    			append_dev(div11, t84);
+    			append_dev(div11, em15);
+    			append_dev(div13, t86);
+    			append_dev(div13, div12);
+    			append_dev(div12, h43);
+    			append_dev(h43, strong9);
+    			append_dev(div12, t88);
+    			append_dev(div12, p17);
+    			append_dev(div12, t90);
+    			append_dev(div12, em16);
+    			append_dev(div14, t92);
+    			append_dev(div14, hr4);
+    			append_dev(div14, t93);
+    			append_dev(div14, h13);
+    			append_dev(div14, t95);
+    			append_dev(div14, p18);
     		},
     		p: noop,
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(h1);
-    			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(div14);
     		}
     	};
 
@@ -3000,47 +3547,91 @@ var app = (function () {
     const file$3 = "src/components/Project.svelte";
 
     function create_fragment$3(ctx) {
-    	let div;
-    	let h2;
-    	let t0_value = /*project*/ ctx[0].title + "";
+    	let div4;
+    	let div3;
+    	let img;
+    	let img_src_value;
     	let t0;
+    	let div1;
+    	let div0;
+    	let t1_value = /*project*/ ctx[0].description + "";
     	let t1;
-    	let p;
-    	let t2_value = /*project*/ ctx[0].description + "";
     	let t2;
+    	let div2;
+    	let span0;
+    	let t3_value = /*project*/ ctx[0].title + "";
+    	let t3;
+    	let t4;
+    	let span1;
+    	let t5_value = /*project*/ ctx[0].date + "";
+    	let t5;
 
     	const block = {
     		c: function create() {
-    			div = element("div");
-    			h2 = element("h2");
-    			t0 = text(t0_value);
-    			t1 = space();
-    			p = element("p");
-    			t2 = text(t2_value);
-    			add_location(h2, file$3, 5, 2, 71);
-    			add_location(p, file$3, 6, 2, 98);
-    			attr_dev(div, "class", "project-card svelte-1lu5xjt");
-    			add_location(div, file$3, 4, 0, 42);
+    			div4 = element("div");
+    			div3 = element("div");
+    			img = element("img");
+    			t0 = space();
+    			div1 = element("div");
+    			div0 = element("div");
+    			t1 = text(t1_value);
+    			t2 = space();
+    			div2 = element("div");
+    			span0 = element("span");
+    			t3 = text(t3_value);
+    			t4 = space();
+    			span1 = element("span");
+    			t5 = text(t5_value);
+    			set_style(img, "object-fit", "cover");
+    			set_style(img, "width", "100%");
+    			set_style(img, "height", "100%");
+    			if (!src_url_equal(img.src, img_src_value = "https://d20kqt4x4odakd.cloudfront.net/unsafe/1012x0/filters:quality(100):rotate(0)/tjazvh02i7ert8ysgp5a1qw0smiw")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "");
+    			attr_dev(img, "class", "svelte-1ma4w30");
+    			add_location(img, file$3, 6, 4, 105);
+    			attr_dev(div0, "class", "text");
+    			add_location(div0, file$3, 8, 6, 322);
+    			attr_dev(div1, "class", "overlay svelte-1ma4w30");
+    			add_location(div1, file$3, 7, 4, 294);
+    			attr_dev(span0, "class", "project-title svelte-1ma4w30");
+    			add_location(span0, file$3, 11, 6, 416);
+    			attr_dev(span1, "class", "project-date svelte-1ma4w30");
+    			add_location(span1, file$3, 12, 6, 473);
+    			attr_dev(div2, "class", "project-info svelte-1ma4w30");
+    			add_location(div2, file$3, 10, 4, 383);
+    			attr_dev(div3, "class", "image-container svelte-1ma4w30");
+    			add_location(div3, file$3, 5, 2, 71);
+    			attr_dev(div4, "class", "project-card svelte-1ma4w30");
+    			add_location(div4, file$3, 4, 0, 42);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, h2);
-    			append_dev(h2, t0);
-    			append_dev(div, t1);
-    			append_dev(div, p);
-    			append_dev(p, t2);
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, div3);
+    			append_dev(div3, img);
+    			append_dev(div3, t0);
+    			append_dev(div3, div1);
+    			append_dev(div1, div0);
+    			append_dev(div0, t1);
+    			append_dev(div3, t2);
+    			append_dev(div3, div2);
+    			append_dev(div2, span0);
+    			append_dev(span0, t3);
+    			append_dev(div2, t4);
+    			append_dev(div2, span1);
+    			append_dev(span1, t5);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*project*/ 1 && t0_value !== (t0_value = /*project*/ ctx[0].title + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*project*/ 1 && t2_value !== (t2_value = /*project*/ ctx[0].description + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*project*/ 1 && t1_value !== (t1_value = /*project*/ ctx[0].description + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*project*/ 1 && t3_value !== (t3_value = /*project*/ ctx[0].title + "")) set_data_dev(t3, t3_value);
+    			if (dirty & /*project*/ 1 && t5_value !== (t5_value = /*project*/ ctx[0].date + "")) set_data_dev(t5, t5_value);
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(div4);
     		}
     	};
 
@@ -3111,22 +3702,253 @@ var app = (function () {
     	}
     }
 
+    var defaultProjects = [
+    	{
+    		imgSrc: "/static/images/JSONImages/ezgif.com-video-to-gif-converter.gif",
+    		title: "Egg Lathe",
+    		date: "2023",
+    		url: "project/egg-lathe.html",
+    		tags: [
+    			"physical"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/9kx543mbwuid8mhroq405k1kv848",
+    		title: "Kroka Collaboration",
+    		date: "2023",
+    		url: "kroka-collaboration.html",
+    		tags: [
+    			"physical",
+    			"experiential"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/IMG_0054_1.JPG",
+    		title: "Code Cruiser",
+    		date: "2023",
+    		url: "project/code-cruiser.html",
+    		tags: [
+    			"physical"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/IMG_0033.JPG",
+    		title: "Pinhole Cameras",
+    		date: "2022",
+    		tags: [
+    			"physical"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/IMG_0090.JPG",
+    		title: "Tower of Tears",
+    		date: "2022",
+    		tags: [
+    			"physical"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/tnro11tlg4hu8es2eu437eceza2j",
+    		title: "Santa Lucia's Head",
+    		date: "2022",
+    		tags: [
+    			"physical",
+    			"experiential"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/9fwth1634jcz4rv3l6svg8o22y6y",
+    		title: "Support Skeleton",
+    		date: "2022",
+    		tags: [
+    			"physical"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/IMG_0089.JPG",
+    		title: "Obscured Mimicry",
+    		date: "2022",
+    		tags: [
+    			"physical",
+    			"experiential"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/hbg72ah4l2472jabqczgf4qtn9it",
+    		title: "Bio Pyramid",
+    		date: "2021",
+    		tags: [
+    			"physical"
+    		]
+    	},
+    	{
+    		imgSrc: "images/Projects/site splash.png",
+    		title: "Portfolio Website",
+    		date: "2023",
+    		tags: [
+    			"digital",
+    			"experiential"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/zkwveq5ac9bnsrl71jkm0yt942eg",
+    		title: "Generative Fiction",
+    		date: "2023",
+    		tags: [
+    			"digital"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/eq3ugkoyvnwqauu33sg6z147lkl8",
+    		title: "Parallel Processing",
+    		date: "2022",
+    		tags: [
+    			"digital"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/9zyq0otjjjb4zchbwddlzozn2fcb",
+    		title: "Sustainable Survival",
+    		date: "2022",
+    		tags: [
+    			"digital"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/kyvfof5hag0zrrocji7p26xjw1bk",
+    		title: "NewVu",
+    		date: "2022",
+    		tags: [
+    			"digital"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/wor1yubny59y3b05ai87and7fdr5",
+    		title: "Phobia Fighter",
+    		date: "2022",
+    		tags: [
+    			"digital"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/935um38lmqteshstcoem0qah6nbs",
+    		title: "Biomass Degredation",
+    		date: "2022",
+    		tags: [
+    			"digital"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/3ywgnhray8imhcelbqg2fvw6tzst",
+    		title: "PROActive",
+    		date: "2021",
+    		tags: [
+    			"digital"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/lrorn6ffcmrzw7hmbqo9nypzvfkq",
+    		title: "The Ascent",
+    		date: "2021",
+    		tags: [
+    			"digital"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/7nh8dlb8fyx7w25lp0tfo76pghgd",
+    		title: "Max Altitude",
+    		date: "2021",
+    		tags: [
+    			"digital"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/sgxnxsyhhizwx3d0pkhr4klk7zu7",
+    		title: "Subterrain Strategy",
+    		date: "2020",
+    		tags: [
+    			"digital"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/2o6ixla1xuauio9q67bvyyzt7ghm",
+    		title: "Graffiti AR",
+    		date: "2020",
+    		tags: [
+    			"digital"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/a5kw3m6pngrx0b5bosfzypa8iq6f",
+    		title: "Tiny Homes",
+    		date: "2023",
+    		tags: [
+    			"experiential",
+    			"physical"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/ylm26bw741e9pczo6kwrxkj8uk9b",
+    		title: "Big Mac For Scale",
+    		date: "2023",
+    		tags: [
+    			"experiential"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/fmsmqjfd249ppp1729ikyltrw91f",
+    		title: "Ballad of Brutality",
+    		date: "2021",
+    		tags: [
+    			"experiential",
+    			"digital"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/6lywwxiiz8g889xyx4bcy1thstrf",
+    		title: "Xengari Animated Cinematic",
+    		date: "2021",
+    		tags: [
+    			"experiential",
+    			"digital"
+    		]
+    	},
+    	{
+    		imgSrc: "/static/images/JSONImages/ij53v9mr089nt5chljk1nmvwofe9",
+    		title: "Audio Visualization",
+    		date: "2020",
+    		tags: [
+    			"experiential",
+    			"digital"
+    		]
+    	},
+    	{
+    		imgSrc: "https://lh7-us.googleusercontent.com/J5_gonDg14u_21YYffokEzpim4rWOL8zXYnFwF7AbBnCfoaDMbMc2RocplN_1gT-NEvq0Wl9ZVdysHUDV193QwW1KyMZg2_CvxFs8tTfWX9a-pnbnzRlpIBfNgl9EWQnWST1Q-2glM3MJ_7dgnMCWEnv=s2048",
+    		title: "The Fair Flair of Facades",
+    		date: "2020",
+    		tags: [
+    			"experiential",
+    			"physical"
+    		]
+    	}
+    ];
+
     /* src/components/Projects.svelte generated by Svelte v3.59.2 */
     const file$2 = "src/components/Projects.svelte";
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[6] = list[i];
+    	child_ctx[8] = list[i];
     	return child_ctx;
     }
 
-    // (24:4) {#if filter === '' || project.category === filter}
-    function create_if_block(ctx) {
+    // (57:2) {#each projects as project}
+    function create_each_block(ctx) {
     	let project;
     	let current;
 
     	project = new Project({
-    			props: { project: /*project*/ ctx[6] },
+    			props: { project: /*project*/ ctx[8] },
     			$$inline: true
     		});
 
@@ -3138,7 +3960,11 @@ var app = (function () {
     			mount_component(project, target, anchor);
     			current = true;
     		},
-    		p: noop,
+    		p: function update(ctx, dirty) {
+    			const project_changes = {};
+    			if (dirty & /*projects*/ 1) project_changes.project = /*project*/ ctx[8];
+    			project.$set(project_changes);
+    		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(project.$$.fragment, local);
@@ -3155,75 +3981,9 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block.name,
-    		type: "if",
-    		source: "(24:4) {#if filter === '' || project.category === filter}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (23:2) {#each projects as project}
-    function create_each_block(ctx) {
-    	let if_block_anchor;
-    	let current;
-    	let if_block = (/*filter*/ ctx[0] === '' || /*project*/ ctx[6].category === /*filter*/ ctx[0]) && create_if_block(ctx);
-
-    	const block = {
-    		c: function create() {
-    			if (if_block) if_block.c();
-    			if_block_anchor = empty();
-    		},
-    		m: function mount(target, anchor) {
-    			if (if_block) if_block.m(target, anchor);
-    			insert_dev(target, if_block_anchor, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			if (/*filter*/ ctx[0] === '' || /*project*/ ctx[6].category === /*filter*/ ctx[0]) {
-    				if (if_block) {
-    					if_block.p(ctx, dirty);
-
-    					if (dirty & /*filter*/ 1) {
-    						transition_in(if_block, 1);
-    					}
-    				} else {
-    					if_block = create_if_block(ctx);
-    					if_block.c();
-    					transition_in(if_block, 1);
-    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
-    				}
-    			} else if (if_block) {
-    				group_outros();
-
-    				transition_out(if_block, 1, 1, () => {
-    					if_block = null;
-    				});
-
-    				check_outros();
-    			}
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(if_block);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(if_block);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			if (if_block) if_block.d(detaching);
-    			if (detaching) detach_dev(if_block_anchor);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(23:2) {#each projects as project}",
+    		source: "(57:2) {#each projects as project}",
     		ctx
     	});
 
@@ -3232,16 +3992,25 @@ var app = (function () {
 
     function create_fragment$2(ctx) {
     	let div;
-    	let button0;
+    	let label0;
+    	let input0;
+    	let input0_checked_value;
+    	let t0;
     	let t1;
-    	let button1;
+    	let label1;
+    	let input1;
+    	let input1_checked_value;
+    	let t2;
     	let t3;
-    	let button2;
+    	let label2;
+    	let input2;
+    	let input2_checked_value;
+    	let t4;
     	let t5;
     	let current;
     	let mounted;
     	let dispose;
-    	let each_value = /*projects*/ ctx[1];
+    	let each_value = /*projects*/ ctx[0];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -3256,35 +4025,53 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div = element("div");
-    			button0 = element("button");
-    			button0.textContent = "All";
+    			label0 = element("label");
+    			input0 = element("input");
+    			t0 = text(" Digital");
     			t1 = space();
-    			button1 = element("button");
-    			button1.textContent = "Web Development";
+    			label1 = element("label");
+    			input1 = element("input");
+    			t2 = text(" Experiential");
     			t3 = space();
-    			button2 = element("button");
-    			button2.textContent = "App Development";
+    			label2 = element("label");
+    			input2 = element("input");
+    			t4 = text(" Physical");
     			t5 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			add_location(button0, file$2, 18, 2, 519);
-    			add_location(button1, file$2, 19, 2, 573);
-    			add_location(button2, file$2, 20, 2, 654);
-    			add_location(div, file$2, 17, 0, 511);
+    			attr_dev(input0, "type", "checkbox");
+    			input0.checked = input0_checked_value = /*filters*/ ctx[1].includes('digital');
+    			add_location(input0, file$2, 47, 4, 1069);
+    			add_location(label0, file$2, 46, 2, 1057);
+    			attr_dev(input1, "type", "checkbox");
+    			input1.checked = input1_checked_value = /*filters*/ ctx[1].includes('experiential');
+    			add_location(input1, file$2, 50, 4, 1208);
+    			add_location(label1, file$2, 49, 2, 1196);
+    			attr_dev(input2, "type", "checkbox");
+    			input2.checked = input2_checked_value = /*filters*/ ctx[1].includes('physical');
+    			add_location(input2, file$2, 53, 4, 1362);
+    			add_location(label2, file$2, 52, 2, 1350);
+    			add_location(div, file$2, 45, 0, 1049);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
-    			append_dev(div, button0);
+    			append_dev(div, label0);
+    			append_dev(label0, input0);
+    			append_dev(label0, t0);
     			append_dev(div, t1);
-    			append_dev(div, button1);
+    			append_dev(div, label1);
+    			append_dev(label1, input1);
+    			append_dev(label1, t2);
     			append_dev(div, t3);
-    			append_dev(div, button2);
+    			append_dev(div, label2);
+    			append_dev(label2, input2);
+    			append_dev(label2, t4);
     			append_dev(div, t5);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -3297,17 +4084,29 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(button0, "click", /*click_handler*/ ctx[3], false, false, false, false),
-    					listen_dev(button1, "click", /*click_handler_1*/ ctx[4], false, false, false, false),
-    					listen_dev(button2, "click", /*click_handler_2*/ ctx[5], false, false, false, false)
+    					listen_dev(input0, "change", /*change_handler*/ ctx[3], false, false, false, false),
+    					listen_dev(input1, "change", /*change_handler_1*/ ctx[4], false, false, false, false),
+    					listen_dev(input2, "change", /*change_handler_2*/ ctx[5], false, false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*projects, filter*/ 3) {
-    				each_value = /*projects*/ ctx[1];
+    			if (!current || dirty & /*filters*/ 2 && input0_checked_value !== (input0_checked_value = /*filters*/ ctx[1].includes('digital'))) {
+    				prop_dev(input0, "checked", input0_checked_value);
+    			}
+
+    			if (!current || dirty & /*filters*/ 2 && input1_checked_value !== (input1_checked_value = /*filters*/ ctx[1].includes('experiential'))) {
+    				prop_dev(input1, "checked", input1_checked_value);
+    			}
+
+    			if (!current || dirty & /*filters*/ 2 && input2_checked_value !== (input2_checked_value = /*filters*/ ctx[1].includes('physical'))) {
+    				prop_dev(input2, "checked", input2_checked_value);
+    			}
+
+    			if (dirty & /*projects*/ 1) {
+    				each_value = /*projects*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
 
@@ -3375,54 +4174,81 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Projects', slots, []);
 
-    	let projects = [
-    		{
-    			id: 1,
-    			title: 'Project One',
-    			category: 'Web Development',
-    			description: 'Description here...'
-    		},
-    		{
-    			id: 2,
-    			title: 'Project Two',
-    			category: 'App Development',
-    			description: 'Description here...'
-    		},
-    		{
-    			id: 3,
-    			title: 'Project Three',
-    			category: 'Web Development',
-    			description: 'Description here...'
+    	let projects = defaultProjects.map(proj => ({
+    		id: proj.url,
+    		title: proj.title,
+    		category: proj.tags,
+    		description: 'Description here...',
+    		date: proj.date,
+    		image: proj.imgSrc
+    	}));
+
+    	let filters = [];
+
+    	function toggleFilter(category) {
+    		if (filters.includes(category)) {
+    			$$invalidate(1, filters = filters.filter(item => item !== category));
+    		} else {
+    			$$invalidate(1, filters = [...filters, category]);
     		}
-    	]; // Add more projects as needed
 
-    	let filter = '';
-
-    	function setFilter(category) {
-    		$$invalidate(0, filter = category);
+    		updateProjects();
     	}
 
+    	function isProjectVisible(project) {
+    		return filters.every(filter => project.category.includes(filter));
+    	}
+
+    	function updateProjects() {
+    		$$invalidate(0, projects = defaultProjects.map(proj => ({
+    			id: proj.url,
+    			title: proj.title,
+    			category: proj.tags,
+    			description: 'Description here...',
+    			date: proj.date,
+    			image: proj.imgSrc
+    		})).filter(isProjectVisible));
+    	}
+
+    	onMount(updateProjects);
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Projects> was created with unknown prop '${key}'`);
     	});
 
-    	const click_handler = () => setFilter('');
-    	const click_handler_1 = () => setFilter('Web Development');
-    	const click_handler_2 = () => setFilter('App Development');
-    	$$self.$capture_state = () => ({ Project, projects, filter, setFilter });
+    	const change_handler = () => toggleFilter('digital');
+    	const change_handler_1 = () => toggleFilter('experiential');
+    	const change_handler_2 = () => toggleFilter('physical');
+
+    	$$self.$capture_state = () => ({
+    		onMount,
+    		Project,
+    		defaultProjects,
+    		projects,
+    		filters,
+    		toggleFilter,
+    		isProjectVisible,
+    		updateProjects
+    	});
 
     	$$self.$inject_state = $$props => {
-    		if ('projects' in $$props) $$invalidate(1, projects = $$props.projects);
-    		if ('filter' in $$props) $$invalidate(0, filter = $$props.filter);
+    		if ('projects' in $$props) $$invalidate(0, projects = $$props.projects);
+    		if ('filters' in $$props) $$invalidate(1, filters = $$props.filters);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [filter, projects, setFilter, click_handler, click_handler_1, click_handler_2];
+    	return [
+    		projects,
+    		filters,
+    		toggleFilter,
+    		change_handler,
+    		change_handler_1,
+    		change_handler_2
+    	];
     }
 
     class Projects extends SvelteComponentDev {

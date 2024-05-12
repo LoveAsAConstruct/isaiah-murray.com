@@ -5,6 +5,7 @@ import terser from '@rollup/plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import css from 'rollup-plugin-css-only';
+import json from '@rollup/plugin-json';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -38,6 +39,8 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		css({ output: 'bundle.css' }),
+		json(),
 		svelte({
 			compilerOptions: {
 				// enable run-time checks when not in production
@@ -46,7 +49,6 @@ export default {
 		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
-		css({ output: 'bundle.css' }),
 
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
