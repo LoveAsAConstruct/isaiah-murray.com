@@ -4,7 +4,7 @@
 
 <div class="project-card">
   <div class="image-container">
-    <img style="object-fit: cover; width: 100%; height: 100%;" src="https://d20kqt4x4odakd.cloudfront.net/unsafe/1012x0/filters:quality(100):rotate(0)/tjazvh02i7ert8ysgp5a1qw0smiw" alt="">
+    <img src="{project.image}" alt="{project.title}">
     <div class="overlay">
       <div class="text">{project.description}</div>
     </div>
@@ -17,14 +17,19 @@
 
 <style>
   .project-card {
-    border: 1px solid #ccc;
     padding: 0;
-    border-radius: 8px;
     width: 100%; /* Responsive width */
     aspect-ratio: 5 / 3; /* Fixed aspect ratio */
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     position: relative;
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius :5px;
+  }
+
+  .project-card:hover {
+    transform: scale(1.05); /* Scales up on hover */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Shadow simulates rising */
   }
 
   @media (max-width: 600px) {
@@ -41,6 +46,9 @@
 
   .image-container img {
     display: block;
+    width: 100%; /* Ensure image covers full width */
+    height: 100%; /* Ensure image covers full height */
+    object-fit: cover; /* Cover fit for better image handling */
   }
 
   .overlay {
@@ -53,7 +61,7 @@
     color: white;
     width: 100%;
     height: 100%;
-    transition: .5s ease;
+    transition: opacity 0.5s ease;
     opacity: 0; /* Initially hidden */
     display: flex;
     justify-content: center;
@@ -73,7 +81,7 @@
     background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
     color: white;
     text-align: center;
-    transition: .5s ease; /* Smooth transition */
+    transition: opacity 0.5s ease;
   }
 
   .image-container:hover .project-info {
