@@ -7,24 +7,26 @@
     id: proj.url,
     title: proj.title,
     category: proj.tags,
-    description: 'Description here...',
+    description: proj.description,
     date: proj.date,
     image: proj.imgSrc
   }));
 
   let filters = [];
 
-  function toggleFilter(category) {
-    if (filters.includes(category)) {
-      filters = filters.filter(item => item !== category);
+  function toggleFilter(filter) {
+    const index = filters.indexOf(filter);
+    if (index === -1) {
+      filters = [...filters, filter];
     } else {
-      filters = [...filters, category];
+      filters = filters.filter(f => f !== filter);
     }
     updateProjects();
   }
 
   function isProjectVisible(project) {
-    return filters.every(filter => project.category.includes(filter));
+    // Check if every filter is included in the project's category tags
+    return filters.length === 0 || filters.every(filter => project.category.includes(filter));
   }
 
   function updateProjects() {
@@ -33,26 +35,62 @@
         id: proj.url,
         title: proj.title,
         category: proj.tags,
-        description: 'Description here...',
+        description: proj.description,
         date: proj.date,
         image: proj.imgSrc
       }))
       .filter(isProjectVisible);
   }
 
+  $: filterStyle = (filter) => filters.includes(filter) ? 'none' : 'grayscale(100%) blur(0px)';
+
   onMount(updateProjects);
 </script>
 
+
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+  .filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .filter {
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filter:hover {
+    transform: scale(1.1);
+  }
+
+  .filter img {
+    width: 100px;
+    height: 100px;
+  }
+</style>
+
 <div>
-  <label>
-    <input type="checkbox" on:change={() => toggleFilter('digital')} checked={filters.includes('digital')} /> Digital
-  </label>
-  <label>
-    <input type="checkbox" on:change={() => toggleFilter('experiential')} checked={filters.includes('experiential')} /> Experiential
-  </label>
-  <label>
-    <input type="checkbox" on:change={() => toggleFilter('physical')} checked={filters.includes('physical')} /> Physical
-  </label>
+  <div class="filter-container">
+    {#each ['digital', 'experiential', 'physical'] as filter}
+      <label class="filter" on:click={() => toggleFilter(filter)}>
+        <img src={`/images/${filter}.png`} alt={filter} style="filter: {filterStyle(filter)};">
+        <span>{filter.charAt(0).toUpperCase() + filter.slice(1)}</span>
+      </label>
+    {/each}
+  </div>
 
   <div class="grid-container">
     {#each projects as project}
@@ -62,13 +100,3 @@
     {/each}
   </div>
 </div>
-
-<style>
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 20px;
-    padding: 20px; /* Increase if more space is needed */
-    margin: 0 auto; /* Centers the grid in the viewport */
-  }
-</style>

@@ -1,7 +1,6 @@
 
-
+<img alt="" style="width: 100%;" src="images/siteheader.jpeg">
 <hr>
-<!-- Intro -->
 <h3> Isaiah Murray </h3>
 <h4> Student at <span style="color: #f25d90; !important"><a style = "color: #f25d90; !important" href="https://cambridge.nuvustudio.com/">Nuvu Innovation School</a></span></h4>
 <h2>My name is Isaiah Murray, I am an aspiring engineer with a love for learning and trying new things!</h2>

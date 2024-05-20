@@ -2,20 +2,23 @@
   export let project;
 </script>
 
-<div class="project-card">
+<div class="project-card" href="/projects/egg_lathe">
   <div class="image-container">
-    <img src="{project.image}" alt="{project.title}">
+    <img class="project-image" src="{project.image}" alt="{project.title}">
     <div class="overlay">
       <div class="text">{project.description}</div>
     </div>
     <div class="project-info">
       <span class="project-title">{project.title}</span>
-      <span class="project-date">{project.date}</span>
+      <span class="project-date"><i>{project.date}</i></span>
     </div>
   </div>
 </div>
 
 <style>
+  .text {
+    padding: 30px;
+  }
   .project-card {
     padding: 0;
     width: 100%; /* Responsive width */
@@ -72,7 +75,9 @@
   .image-container:hover .overlay {
     opacity: 1;
   }
-
+  .image-container:hover .project-image {
+    filter: blur(10px);
+  }
   .project-info {
     position: absolute;
     width: 100%;
@@ -83,7 +88,9 @@
     text-align: center;
     transition: opacity 0.5s ease;
   }
-
+  .project-image {
+    transition: filter 0.5s ease;
+  }
   .image-container:hover .project-info {
     opacity: 0; /* Hide on hover */
   }

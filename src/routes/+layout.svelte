@@ -18,6 +18,6 @@
 <a href="/contact">Contact</a>
 </nav>
 
-<div class="container m-1">
+<div style="margin: 30px;">
     <slot></slot>  <!-- This slot tag is crucial -->
 </div>
