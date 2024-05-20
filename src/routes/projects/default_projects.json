@@ -5,7 +5,8 @@
         "date": "2023",
         "url": "project/egg-lathe.html",
         "tags": ["physical"],
-        "description": "A custom-built CNC application for automated decoration of eggs"
+        "description": "A custom-built CNC application for automated decoration of eggs",
+        "page": "egg_lathe"
     },
     {
         "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/a56ige5huxmwgrd0ibvy3ds01ebv",

@@ -9,7 +9,8 @@
     category: proj.tags,
     description: proj.description,
     date: proj.date,
-    image: proj.imgSrc
+    image: proj.imgSrc,
+    page: proj.page || null // handle optional page field
   }));
 
   let filters = [];
@@ -25,7 +26,6 @@
   }
 
   function isProjectVisible(project) {
-    // Check if every filter is included in the project's category tags
     return filters.length === 0 || filters.every(filter => project.category.includes(filter));
   }
 
@@ -37,7 +37,8 @@
         category: proj.tags,
         description: proj.description,
         date: proj.date,
-        image: proj.imgSrc
+        image: proj.imgSrc,
+        page: proj.page || null // handle optional page field
       }))
       .filter(isProjectVisible);
   }
@@ -46,7 +47,6 @@
 
   onMount(updateProjects);
 </script>
-
 
 <style>
   .grid-container {
@@ -95,7 +95,13 @@
   <div class="grid-container">
     {#each projects as project}
       <div class="project-item">
-        <Project {project} />
+        {#if project.page}
+          <a href={`/projects/${project.page}`}>
+            <Project {project} />
+          </a>
+        {:else}
+          <Project {project} />
+        {/if}
       </div>
     {/each}
   </div>
