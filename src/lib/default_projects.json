@@ -14,7 +14,8 @@
         "date": "2023",
         "url":"kroka-collaboration.html",
         "tags": ["physical", "experiential"],
-        "description": "A client-based design project for the Kroka Wilderness School in Marlow, New Hampshire"
+        "description": "A client-based design project for the Kroka Wilderness School in Marlow, New Hampshire",
+        "page": "kroka_collab"
     },
     {
         "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/2400x1350/filters:quality(100):rotate(0)/nuvu-camera-sync-production/cambridge/6abddafdba0e437105fa17133a8f734078405eb9b31ff2b8183b4870b21778d5/IMG_0054_1.JPG",
@@ -22,7 +23,8 @@
         "date": "2023",
         "url": "project/code-cruiser.html",
         "description": "A educational montessori toy designed to teach intro-level coding practices",
-        "tags": ["physical"]
+        "tags": ["physical"],
+        "page": "code_cruiser"
     },
     {
         "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/1348x0/filters:quality(100):rotate(0)/4jkv6c88aftreqie8e2ohfzrz4pv",
