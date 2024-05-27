@@ -85,10 +85,10 @@
 <div>
   <div class="filter-container">
     {#each ['digital', 'experiential', 'physical'] as filter}
-      <label class="filter" on:click={() => toggleFilter(filter)}>
+      <button class="filter" on:click={() => toggleFilter(filter)} type="button">
         <img src={`/images/${filter}.png`} alt={filter} style="filter: {filterStyle(filter)};">
         <span>{filter.charAt(0).toUpperCase() + filter.slice(1)}</span>
-      </label>
+      </button>
     {/each}
   </div>
 

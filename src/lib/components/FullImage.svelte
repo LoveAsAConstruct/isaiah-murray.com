@@ -4,7 +4,7 @@
   
   <div class="full-image">
     <div class="image">
-      <img src={image} alt="Image" />
+      <img src={image} alt="" />
     </div>
   </div>
   
