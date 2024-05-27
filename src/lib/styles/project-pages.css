@@ -1,0 +1,77 @@
+/* Common styles for project pages */
+.project-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .project-title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  /* Styles for TextLeftImageRight.svelte */
+  .text-left-image-right .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .text-left-image-right .text {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .text-left-image-right .image {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .text-left-image-right .image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Styles for TextRightImageLeft.svelte */
+  .text-right-image-left .container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .text-right-image-left .text {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .text-right-image-left .image {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .text-right-image-left .image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Styles for FullImage.svelte */
+  .full-image .image {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .full-image .image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Styles for FullText.svelte */
+  .full-text .text {
+    width: 100%;
+    margin: 20px 0;
+    padding: 20px;
+  }
+  

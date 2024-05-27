@@ -1,0 +1,197 @@
+[
+    {
+        "imgSrc": "https://photos.app.goo.gl/miVaJBdW1RDw4Sjk7",
+        "title": "Egg Lathe",
+        "date": "2023",
+        "url": "project/egg-lathe.html",
+        "tags": ["physical"],
+        "description": "A custom-built CNC application for automated decoration of eggs",
+        "page": "egg_lathe"
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/a56ige5huxmwgrd0ibvy3ds01ebv",
+        "title": "Kroka Collaboration",
+        "date": "2023",
+        "url":"kroka-collaboration.html",
+        "tags": ["physical", "experiential"],
+        "description": "A client-based design project for the Kroka Wilderness School in Marlow, New Hampshire",
+        "page": "kroka_collab"
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/2400x1350/filters:quality(100):rotate(0)/nuvu-camera-sync-production/cambridge/6abddafdba0e437105fa17133a8f734078405eb9b31ff2b8183b4870b21778d5/IMG_0054_1.JPG",
+        "title": "Code Cruiser",
+        "date": "2023",
+        "url": "project/code-cruiser.html",
+        "description": "A educational montessori toy designed to teach intro-level coding practices",
+        "tags": ["physical"],
+        "page": "code_cruiser"
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/1348x0/filters:quality(100):rotate(0)/4jkv6c88aftreqie8e2ohfzrz4pv",
+        "title": "Pinhole Cameras",
+        "date": "2022",
+        "description": "A brief journey into the design and fabrication of pinhole cameras",
+        "tags": ["physical"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/xmdl3cw68pwqm0s0xoe0xqajcurn",
+        "title": "Tower of Tears",
+        "date": "2022",
+        "description": "An installation designed for mental health awareness",
+        "tags": ["physical"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/tnro11tlg4hu8es2eu437eceza2j",
+        "title": "Santa Lucia's Head",
+        "date": "2022",
+        "description": "A ceramic cutlery design celebrating italian culture",
+        "tags": ["physical", "experiential"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/t5tlxy9we75o7i6ehglkzmdq4c2j",
+        "title": "Support Skeleton",
+        "date": "2022",
+        "description": "A wearable designed to aid users with lower-back support and posture",
+        "tags": ["physical"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/1508x1214/filters:quality(100):rotate(0)/nuvu-camera-sync-production/cambridge/5cdd7ab780f1d56a544ac07ff6a295882aa2bac3925b3c18100f4088485c33a4/IMG_0089.JPG",
+        "title": "Obscured Mimicry",
+        "date": "2022",
+        "description": "A educational device curated to teach mimicry for the Wildflower Montessori school",
+        "tags": ["physical", "experiential"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/hbg72ah4l2472jabqczgf4qtn9it",
+        "title": "Bio Pyramid",
+        "date": "2021",
+        "description": "A material science and packaging solution utilizing bioplastics",
+        "tags": ["physical"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/2400x0/filters:quality(100):rotate(0)/kmp42iywalh3irti9int7t0mi40a",
+        "title": "Portfolio Website",
+        "date": "2023",
+        "description": "A dive into the construction and design of this website",
+        "tags": ["digital", "experiential"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/zkwveq5ac9bnsrl71jkm0yt942eg",
+        "title": "Generative Fiction",
+        "date": "2023",
+        "description": "A conceptual proof for the use of generative AI to enhance a product's storytelling capacity",
+        "tags": ["digital"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/y3z40ejyu6o3wimhlxmz27n86tyv",
+        "title": "Parallel Processing",
+        "date": "2022",
+        "description": "A short multiplayer game developed within Unreal Engine",
+        "tags": ["digital"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/j53kcqemfv0nvatiq4qmloep0huh",
+        "title": "Sustainable Survival",
+        "date": "2022",
+        "description": "A virtual reality game to encourage renewable energy",
+        "tags": ["digital"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/h4ta8fze9xqdhy6e4dv6x4wv5o6v",
+        "title": "NewVu",
+        "date": "2022",
+        "description": "A program utilizing constraint satisfaction algorithms to procedurally generate floor plans",
+        "tags": ["digital"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/wor1yubny59y3b05ai87and7fdr5",
+        "title": "Phobia Fighter",
+        "date": "2022",
+        "description": "A game designed for procedural enviroment interactions",
+        "tags": ["digital"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/935um38lmqteshstcoem0qah6nbs",
+        "title": "Biomass Degredation",
+        "date": "2022",
+        "description": "An enviromental storytelling experience within the realm of VFX",
+        "tags": ["digital"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/kr27n7aptoqwc7lbfnyfh4eemg27",
+        "title": "PROActive",
+        "date": "2021",
+        "description": "A productivity application designed for iOS",
+        "tags": ["digital"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/lrorn6ffcmrzw7hmbqo9nypzvfkq",
+        "title": "The Ascent",
+        "date": "2021",
+        "description": "A virtual reality experience to simulate the task of arborist seed collection",
+        "tags": ["digital"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/kwy7lrdyq1b5xd608v6lcuj5i87d",
+        "title": "Max Altitude",
+        "date": "2021",
+        "description": "A virtual reality game designed to simulate the piloting of a spaceship",
+        "tags": ["digital"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/gvbwdqx55u0mbzwfhn0wmw8pzwut",
+        "title": "Subterrain Strategy",
+        "date": "2020",
+        "description": "A utilization of chess AI within an open-world format",
+        "tags": ["digital"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/2o6ixla1xuauio9q67bvyyzt7ghm",
+        "title": "Graffiti AR",
+        "date": "2020",
+        "description": "An augmented reality project allowing for virtual graffiti art",
+        "tags": ["digital"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/a5kw3m6pngrx0b5bosfzypa8iq6f",
+        "title": "Tiny Homes",
+        "date": "2023",
+        "description": "An architectural design project; creating acessible housing enviroments for ex-convicts",
+        "tags": ["experiential", "physical"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/2oq9tu0lyr6e15lcd9ny69cc04tz",
+        "title": "Big Mac For Scale",
+        "description": "A utilization of data science to create an installation on the inneficiencies of commercial foodstuffs",
+        "date": "2023",
+        "tags": ["experiential"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/fmsmqjfd249ppp1729ikyltrw91f",
+        "title": "Ballad of Brutality",
+        "date": "2021",
+        "description": "A storytelling and worldbuilding writing project",
+        "tags": ["experiential", "digital"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/fmsmqjfd249ppp1729ikyltrw91f",
+        "title": "Xengari Animated Cinematic",
+        "date": "2021",
+        "description": "A use of VFX within worldbuilding",
+        "tags": ["experiential", "digital"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/ij53v9mr089nt5chljk1nmvwofe9",
+        "title": "Audio Visualization",
+        "date": "2020",
+        "description": "A fractal-based audio visualization project",
+        "tags": ["experiential", "digital"]
+    },
+    {
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/17x6wscaqo2ejn0ghbv4wba92a2o",
+        "title": "The Fair Flair of Facades",
+        "date": "2020",
+        "description": "A installation design project, creating facades to increase awareness of the african american heritage trail",
+        "tags": ["experiential", "physical"]
+    }
+]
