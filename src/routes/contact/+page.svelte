@@ -14,13 +14,6 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    .contact-container img {
-      border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      margin-bottom: 20px;
-    }
     .contact-container h1 {
       font-size: 2.5em;
       margin-bottom: 10px;

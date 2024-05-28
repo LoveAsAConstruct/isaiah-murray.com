@@ -61,7 +61,6 @@
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-top: 20px;
   }
 
   .filter {
@@ -86,6 +85,10 @@
   .filter img {
     width: 100px;
     height: 100px;
+  }
+  .filter-container button {
+    outline: none;
+    background-color: transparent;
   }
 </style>
 
