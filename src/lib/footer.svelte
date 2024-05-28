@@ -10,7 +10,7 @@
         <a href="https://cambridge.nuvustudio.com/users/isa-murray" target="_blank" rel="noopener noreferrer"><i class="fas fa-user"></i></a>
     </div>
     <div class="build-info">
-        production built with SvelteKit on {buildDate}
+        development built with SvelteKit on {buildDate}
     </div>
 </div>
 
