@@ -67,13 +67,20 @@
   .filter {
     cursor: pointer;
     transition: transform 0.2s;
+    background: transparent;
+    outline-color: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
+    outline-width: 0;
   }
 
   .filter:hover {
     transform: scale(1.1);
+  }
+
+  .filtertext {
+    color: black;
   }
 
   .filter img {
@@ -87,7 +94,7 @@
     {#each ['digital', 'experiential', 'physical'] as filter}
       <button class="filter" on:click={() => toggleFilter(filter)} type="button">
         <img src={`/images/${filter}.png`} alt={filter} style="filter: {filterStyle(filter)};">
-        <span>{filter.charAt(0).toUpperCase() + filter.slice(1)}</span>
+        <span class="filtertext">{filter.charAt(0).toUpperCase() + filter.slice(1)}</span>
       </button>
     {/each}
   </div>
