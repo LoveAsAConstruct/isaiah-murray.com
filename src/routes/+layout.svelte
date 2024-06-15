@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-<title>Svelte App</title>
+<title>Isaiah Murray (Development)</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="/favicon.png" type="image/png">
