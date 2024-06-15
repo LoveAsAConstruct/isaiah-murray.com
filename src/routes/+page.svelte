@@ -64,7 +64,7 @@
 <div class="row container mt-3">
     <div class="col">
         <h4><strong>NUVU INNOVATION SCHOOL (8th - 12th Grades)</strong></h4>
-        <p>Project based learning studios and seminars. John’s Hopkins CTY courses in Bio, Chem, AP Chem, and Essay  Writing. Math courses through Art of Problem solving include Intermediate Algebra, Precalculus, AP Calculus. Currently taking multivariable and CS-50 through harvard extension.</p>
+        <p>Project based learning studios and seminars. John’s Hopkins CTY courses in Bio, Chem, AP Chem, and Essay  Writing. Math courses through Art of Problem solving include Intermediate Algebra, Precalculus, AP Calculus. Took Multivariable Calculus, CS50, and CSCI-e80 through Harvard Extension School</p>
         <em>2020 – 2024</em>
     </div>
     <div class="col">

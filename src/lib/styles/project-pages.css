@@ -1,6 +1,5 @@
 /* Common styles for project pages */
 .project-page {
-    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
   }
@@ -74,4 +73,6 @@
     margin: 20px 0;
     padding: 20px;
   }
-  
+  .project-image {
+    width: 100%;
+  }
