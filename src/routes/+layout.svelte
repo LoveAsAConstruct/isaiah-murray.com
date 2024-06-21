@@ -1,23 +1,41 @@
 <script>
-  import Header from '$lib/header.svelte';
-  import Footer from '$lib/footer.svelte';
+  import Header from '../components/header.svelte';
+  import Footer from '../components/footer.svelte';
   console.log('Layout is being processed');
 </script>
 
 <svelte:head>
-<title>Isaiah Murray</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="/favicon.png" type="image/png">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="/styles/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Isaiah Murray</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.png" type="image/png">
 </svelte:head>
 
-<Header />
-
-<div style="margin: 60px 30px 30px 30px;">
-  <slot></slot>  <!-- This slot tag is crucial -->
+<div class="layout-container">
+  <Header />
+  
+  <main class="content">
+    <slot></slot> <!-- This slot tag is crucial -->
+  </main>
+  
+  <Footer buildDate="May 28, 2024" />
 </div>
 
-<Footer buildDate="May 28, 2024" />
+<style>
+  :global(html, body) {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  .layout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #FEFEF9;
+  }
+
+  .content {
+    flex: 1; /* Allows content to grow and push the footer to the bottom */
+  }
+</style>
