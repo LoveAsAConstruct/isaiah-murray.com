@@ -6,7 +6,7 @@
     export let width = 400;
 </script>
 
-<div class="container">
+<div class="container" style="max-width: {width}px;">
     <h2>{title}</h2>
     <i>{subtitle}</i>
     <p>{description}</p>
@@ -16,20 +16,24 @@
 <style>
     .container {
         font: 18px Inter, sans-serif;
-        max-width: var(--width)*1px;
+        width: 100%;
         overflow-wrap: normal;
         overflow: hidden;
+        min-width: 300px;
     }
     h2 {
+        width: 100%;
         margin: 0;
         color: #2F1C12;
         font-weight: bold;
     }
     i {
+        width: 100%;
         margin: 0;
         color: #CA9679;
     }
     p { 
+        width: 100%;
         margin: 0;
         color: #030302;
     }
