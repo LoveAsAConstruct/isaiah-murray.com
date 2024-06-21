@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import Project from '../../components/project.svelte';
+  import Project from '../../components/Project.svelte';
   import defaultProjects from '$lib/default_projects.json';
 
   let projects = defaultProjects.map(proj => ({
