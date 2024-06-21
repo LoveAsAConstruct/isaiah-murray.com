@@ -12,7 +12,7 @@
         "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/a56ige5huxmwgrd0ibvy3ds01ebv",
         "title": "Kroka Collaboration",
         "date": "2023",
-        "url":"kroka-collaboration.html",
+        "url": "kroka-collaboration.html",
         "tags": ["physical", "experiential"],
         "description": "A client-based design project for the Kroka Wilderness School in Marlow, New Hampshire",
         "page": "kroka_collab"
@@ -22,7 +22,7 @@
         "title": "Code Cruiser",
         "date": "2023",
         "url": "project/code-cruiser.html",
-        "description": "A educational montessori toy designed to teach intro-level coding practices",
+        "description": "An educational Montessori toy designed to teach intro-level coding practices",
         "tags": ["physical"],
         "page": "code_cruiser"
     },
@@ -44,7 +44,7 @@
         "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/tnro11tlg4hu8es2eu437eceza2j",
         "title": "Santa Lucia's Head",
         "date": "2022",
-        "description": "A ceramic cutlery design celebrating italian culture",
+        "description": "A ceramic cutlery design celebrating Italian culture",
         "tags": ["physical", "experiential"]
     },
     {
@@ -58,7 +58,7 @@
         "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/1508x1214/filters:quality(100):rotate(0)/nuvu-camera-sync-production/cambridge/5cdd7ab780f1d56a544ac07ff6a295882aa2bac3925b3c18100f4088485c33a4/IMG_0089.JPG",
         "title": "Obscured Mimicry",
         "date": "2022",
-        "description": "A educational device curated to teach mimicry for the Wildflower Montessori school",
+        "description": "An educational device curated to teach mimicry for the Wildflower Montessori school",
         "tags": ["physical", "experiential"]
     },
     {
@@ -107,14 +107,14 @@
         "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/wor1yubny59y3b05ai87and7fdr5",
         "title": "Phobia Fighter",
         "date": "2022",
-        "description": "A game designed for procedural enviroment interactions",
+        "description": "A game designed for procedural environment interactions",
         "tags": ["digital"]
     },
     {
         "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/935um38lmqteshstcoem0qah6nbs",
-        "title": "Biomass Degredation",
+        "title": "Biomass Degradation",
         "date": "2022",
-        "description": "An enviromental storytelling experience within the realm of VFX",
+        "description": "An environmental storytelling experience within the realm of VFX",
         "tags": ["digital"]
     },
     {
@@ -156,13 +156,13 @@
         "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/a5kw3m6pngrx0b5bosfzypa8iq6f",
         "title": "Tiny Homes",
         "date": "2023",
-        "description": "An architectural design project; creating acessible housing enviroments for ex-convicts",
+        "description": "An architectural design project creating accessible housing environments for ex-convicts",
         "tags": ["experiential", "physical"]
     },
     {
         "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/2oq9tu0lyr6e15lcd9ny69cc04tz",
         "title": "Big Mac For Scale",
-        "description": "A utilization of data science to create an installation on the inneficiencies of commercial foodstuffs",
+        "description": "A utilization of data science to create an installation on the inefficiencies of commercial foodstuffs",
         "date": "2023",
         "tags": ["experiential"]
     },
@@ -174,7 +174,7 @@
         "tags": ["experiential", "digital"]
     },
     {
-        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/fmsmqjfd249ppp1729ikyltrw91f",
+        "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/3l8b2lm1aguj6eakv8iea6ydm4aw",
         "title": "Xengari Animated Cinematic",
         "date": "2021",
         "description": "A use of VFX within worldbuilding",
@@ -191,7 +191,7 @@
         "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/720x405/filters:quality(90):rotate(0)/17x6wscaqo2ejn0ghbv4wba92a2o",
         "title": "The Fair Flair of Facades",
         "date": "2020",
-        "description": "A installation design project, creating facades to increase awareness of the african american heritage trail",
+        "description": "An installation design project creating facades to increase awareness of the African American Heritage Trail",
         "tags": ["experiential", "physical"]
     }
 ]

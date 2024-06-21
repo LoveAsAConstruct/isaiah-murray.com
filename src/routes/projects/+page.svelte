@@ -81,6 +81,7 @@
   }
   .filter-container button {
     outline: none;
+    border: none;
     background-color: transparent;
   }
 </style>

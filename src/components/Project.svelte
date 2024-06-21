@@ -2,7 +2,7 @@
   export let project;
 </script>
 
-<div class="project-card" href="/projects/egg_lathe">
+<div class="project-card">
   <div class="image-container">
     <img class="project-image" src="{project.image}" alt="{project.title}">
     <div class="overlay">
@@ -19,6 +19,7 @@
   .text {
     padding: 30px;
   }
+
   .project-card {
     padding: 0;
     width: 100%; /* Responsive width */
@@ -27,7 +28,8 @@
     position: relative;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius :5px;
+    border-radius: 5px;
+    font: 17px Inter, sans-serif;
   }
 
   .project-card:hover {
@@ -60,7 +62,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Black see-through */
+    background: #0303029a; /* Black see-through */
     color: white;
     width: 100%;
     height: 100%;
@@ -75,29 +77,39 @@
   .image-container:hover .overlay {
     opacity: 1;
   }
+
   .image-container:hover .project-image {
     filter: blur(10px);
   }
+
   .project-info {
     position: absolute;
     width: 100%;
+    height: 40px;
     bottom: 0;
-    padding: 10px 0;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in width/height */
+    background: #0303029a; /* Semi-transparent background */
     color: white;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     transition: opacity 0.5s ease;
   }
+
   .project-image {
     transition: filter 0.5s ease;
   }
+
   .image-container:hover .project-info {
     opacity: 0; /* Hide on hover */
   }
 
   .project-title, .project-date {
     display: inline-block;
-    padding: 5px 10px;
   }
 
+  .project-title {
+    font-weight: bold;
+  }
 </style>
