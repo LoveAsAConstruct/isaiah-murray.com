@@ -19,7 +19,7 @@
     width: 100%;
     align-items: center;
     padding: 0 30px;
-    height: 75px;
+    height: 50px;
   }
 
   .navigation-bar {
@@ -38,7 +38,7 @@
   }
   .nav-links li a {
     color: #FEFEF9;
-    font: 32px Inter, sans-serif;
+    font: 24px Inter, sans-serif;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
   }

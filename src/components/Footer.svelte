@@ -1,27 +1,34 @@
 <svelte:head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </svelte:head>
 
 <section class="footer-container">
   <nav class="footer-nav">
-    <a href="https://www.linkedin.com/in/isa-murray/" aria-label="LinkedIn" class="social-link fa fa-linkedin"></a>
-    <a href="https://github.com/LoveAsAConstruct" aria-label="Github" class="social-link fa fa-github"></a>
-    <a href="https://www.instagram.com/isa19837/" aria-label="Instagram" class="social-link fa fa-instagram"></a>
-    <a href="/" aria-label="Email" class="social-link fa fa-envelope"></a>
-    <a href="https://cambridge.nuvustudio.com/users/isa-murray" aria-label="Profile" class="social-link fa fa-user"></a>
+    <a href="https://www.linkedin.com/in/isa-murray/" aria-label="LinkedIn" class="social-link fab fa-linkedin"></a>
+    <a href="https://github.com/LoveAsAConstruct" aria-label="Github" class="social-link fab fa-github"></a>
+    <a href="https://www.instagram.com/isa19837/" aria-label="Instagram" class="social-link fab fa-instagram"></a>
+    <a href="/" aria-label="Email" class="social-link fas fa-envelope"></a>
+    <a href="https://cambridge.nuvustudio.com/users/isa-murray" aria-label="Profile" class="social-link fas fa-user"></a>
   </nav>
+  <div class="build-info">
+    Production build on {new Date().toLocaleDateString()}
+  </div>
 </section>
 
 <style>
+  a {
+    color: #FDF6D6;
+  }
+
   .footer-container {
     background-color: #030302;
     display: flex;
-    width: 100%;
+    justify-content: space-between;
     align-items: center;
-    justify-content: flex-start; /* Justify the content to the left */
     padding: 20px 30px;
-    height: 75px;
+    height: 50px;
+    font-family: 'Arial', sans-serif; /* Ensure font renders correctly */
+    position: relative;
   }
 
   .footer-nav {
@@ -40,14 +47,23 @@
     color: #FDF6D6;
   }
 
+  .build-info {
+    color: #030302; /* Same color as the background */
+    transition: color 0.3s;
+  }
+
+  .footer-container:hover .build-info {
+    color: #FDF6D6; /* Show text when hovered */
+  }
+
   @media (max-width: 991px) {
     .footer-container {
       padding-right: 20px;
+      justify-content: space-between;
     }
 
     .footer-nav {
       flex-wrap: wrap;
-      justify-content: flex-start; /* Ensure the links are left-aligned on smaller screens */
     }
   }
 </style>

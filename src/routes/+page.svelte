@@ -53,12 +53,14 @@
     }
 
     .content-container {
-        margin: 15px;
+        margin: 25px;
         font: 20px Inter, sans-serif;
     }
 
     .header-image {
+        object-fit: cover;
         width: 100%;
+        aspect-ratio: 2.5;
     }
     .header-container{
         position: relative;

@@ -6,7 +6,7 @@
     export let width = 400;
 </script>
 
-<div class="container" style="max-width: {width}px;">
+<div class="container" style="">
     <h2>{title}</h2>
     <i>{subtitle}</i>
     <p>{description}</p>
