@@ -45,6 +45,7 @@
   
   .nav-links li a:hover {
     color: #FDF6D6;
+    scale: 1.1 !important;
     font-weight: 100 !important;
   }
 

@@ -40,11 +40,12 @@
     color: #FEFEF9;
     font-size: 32px;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: all 0.3s;
   }
 
   .social-link:hover {
     color: #FDF6D6;
+    scale: 1.1;
   }
 
   .build-info {
