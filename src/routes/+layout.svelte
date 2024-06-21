@@ -1,6 +1,7 @@
 <script>
   import Header from '../components/Header.svelte';
   import Footer from '../components/Footer.svelte';
+  import { inject } from '@vercel/analytics'
   console.log('Layout is being processed');
 </script>
 
