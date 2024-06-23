@@ -37,13 +37,7 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Shadow simulates rising */
   }
 
-  @media (max-width: 600px) {
-    .project-card {
-      padding: 10px; /* Adds padding to give content more room on small screens */
-      aspect-ratio: 1; /* Optional: Makes the cards more square on small screens */
-    }
-  }
-
+  
   .image-container {
     position: relative;
     height: 100%;
