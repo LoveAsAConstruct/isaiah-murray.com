@@ -93,7 +93,6 @@
         text-decoration: none;
     }
     .name-container sub a :hover{
-        font-weight: 700;
         scale: 1.5;
     }
 </style>

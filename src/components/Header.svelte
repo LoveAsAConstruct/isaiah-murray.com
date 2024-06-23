@@ -44,9 +44,8 @@
   }
   
   .nav-links li a:hover {
-    color: #FDF6D6;
+    color: #CA9679;
     scale: 1.1 !important;
-    font-weight: 100 !important;
   }
 
   .name-title {
