@@ -11,7 +11,7 @@
     <a href="https://cambridge.nuvustudio.com/users/isa-murray" aria-label="Profile" class="social-link fas fa-user"></a>
   </nav>
   <div class="build-info">
-    Production build on {new Date().toLocaleDateString()}
+    Production build on 6/24/2024
   </div>
 </section>
 
