@@ -81,6 +81,7 @@
         position: absolute;
         bottom: 22px;
         font-weight: 800;
+        color: #FDF6D6;
         font-size: 64px;
     }
 
