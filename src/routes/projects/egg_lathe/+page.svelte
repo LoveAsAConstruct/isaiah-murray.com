@@ -66,6 +66,8 @@
 </script>
 
 <div class="project-page">
+    <div class="github-card" data-github="LoveAsAConstruct/Egg-Lathe" data-width="400" data-height="" data-theme="medium"></div>
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
     <h1>Egg Lathe</h1>
     <p>The Egg Lathe is an automation of Ukrainian egg dying (known as Pysanky). This project consists of three major parts: hardware, firmware, and software.</p>
     <h2>Background</h2>
