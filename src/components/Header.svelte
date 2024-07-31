@@ -6,8 +6,8 @@
   <nav class="navigation-bar">
     <ul class="nav-links">
       <li><a href="/" tabindex="0" class="name-title">Isaiah Murray</a></li>
-      <li><a href="projects" tabindex="0">Projects</a></li>
-      <li><a href="contact" tabindex="0">Contact</a></li>
+      <li><a href="/projects" tabindex="0">Projects</a></li>
+      <li><a href="/contact" tabindex="0">Contact</a></li>
     </ul>
   </nav>
 </header>
