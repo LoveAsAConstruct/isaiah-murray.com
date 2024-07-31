@@ -3,7 +3,6 @@
         "imgSrc": "/images/projects/virtue/title.png",
         "title": "VIRTUE",
         "date": "2024",
-        "url": "projects/virtue",
         "tags": ["digital"],
         "description": "An integration of a variety of compnents into a LINKER net, which then communicates with a core to function as a personal assistant"
     },
@@ -11,7 +10,6 @@
         "imgSrc": "images/projects/desk_projector/3D1BDF01-08AA-4F0F-8D1F-29A5C2F5E56B_1_105_c.jpeg",
         "title": "Desk Projector",
         "date": "2024",
-        "url": "projects/desk-projector",
         "tags": ["physical", "digital"],
         "description": "A projected display on my desk allowing for virtual rulers and measurements on my work surface"
     },
@@ -19,7 +17,6 @@
         "imgSrc": "images/projects/rowing_form/ezgif.com-video-to-gif-converter (9).gif",
         "title": "Rowing Form Analyzer",
         "date": "2024",
-        "url": "projects/rowing-form",
         "tags": ["digital"],
         "description": "Software utilizing OpenPose and reinforcement learning to provide feedback and artificial coaching"
     },
@@ -27,7 +24,6 @@
         "imgSrc": "images/projects/fiber_optic/image.png",
         "title": "OSFOP",
         "date": "2024",
-        "url": "projects/fiber-optic",
         "tags": ["digital"],
         "description": "A fiber-optic communication protocol and hardware configuration allowing for robust kilobyte data transfer along a single optical thread"
     },
@@ -35,23 +31,22 @@
         "imgSrc": "images/projects/egg_lathe/413E6CA7-410C-4811-B012-0264FC44B8B6_1_105_c.jpeg",
         "title": "Egg Lathe",
         "date": "2023",
-        "url": "projects/egg-lathe",
         "tags": ["physical", "digital"],
-        "description": "A custom-built CNC application for automated decoration of eggs"
+        "description": "A custom-built CNC application for automated decoration of eggs",
+        "page": "egg_lathe"
     },
     {
         "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/a56ige5huxmwgrd0ibvy3ds01ebv",
         "title": "Kroka Collaboration",
         "date": "2023",
-        "url": "projects/kroka-collaboration",
         "tags": ["physical", "experiential"],
-        "description": "A client-based design project for the Kroka Wilderness School in Marlow, New Hampshire"
+        "description": "A client-based design project for the Kroka Wilderness School in Marlow, New Hampshire",
+        "page": "kroka_collab"
     },
     {
         "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/2400x1350/filters:quality(100):rotate(0)/nuvu-camera-sync-production/cambridge/6abddafdba0e437105fa17133a8f734078405eb9b31ff2b8183b4870b21778d5/IMG_0054_1.JPG",
         "title": "Code Cruiser",
         "date": "2023",
-        "url": "project/code-cruiser.html",
         "description": "An educational Montessori toy designed to teach intro-level coding practices",
         "tags": ["physical"],
         "page": "code_cruiser"

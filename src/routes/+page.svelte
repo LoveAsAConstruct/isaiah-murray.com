@@ -79,6 +79,7 @@
         bottom: 22px;
         font-weight: 800;
         font: 64px;
+        color: #FDF6D6;
     }
     .name-container sub{
         margin: 0;
