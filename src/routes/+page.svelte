@@ -36,7 +36,6 @@
     .content-container h1 {
         margin-bottom: 10px;
         margin-top: 40px;
-        color: #FDF6D6;
     }
     .experience-container {
         display: grid;
