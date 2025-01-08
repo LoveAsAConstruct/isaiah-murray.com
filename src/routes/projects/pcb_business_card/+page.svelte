@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+    import projectPageStyles from '$lib/styles/project-page-notion.css?url';
+  </script>
+  
+  <svelte:head>
+    <link rel="stylesheet" href="{projectPageStyles}">
     <title>PCB Business Card</title>
-	<link rel="stylesheet" href="$lib/styles/project-page-notion.css">
-</head>
+  </svelte:head>
 
+<main>
 <body>
 	<header>
 		<img class="page-cover-image" src="$lib/images/projects/pcb-card/IMG_4365.jpeg" alt="Page Cover Image">
@@ -118,4 +119,4 @@
         </article>
     </div>
 </body>
-</html>
+</main>
