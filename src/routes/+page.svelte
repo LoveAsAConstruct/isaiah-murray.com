@@ -1,5 +1,5 @@
 <script>
-    import Entry from "../components/entry.svelte";
+    import Entry from "$lib/components/entry.svelte";
 </script>
 
 <div class="header-container">

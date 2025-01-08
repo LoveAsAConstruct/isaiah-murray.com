@@ -1,5 +1,21 @@
 [
     {
+        "imgSrc": "images/projects/radar_calibration/image.png",
+        "title": "Radar Calibration",
+        "date": "2024",
+        "tags": ["digital", "physical"],
+        "description": "Calibration of a 4x4 and 4x16 radar array",
+        "page": "radar_calibration"
+    },
+    {
+        "imgSrc": "images/projects/pcb_card/IMG_4365.jpeg",
+        "title": "PCBCard",
+        "date": "2024",
+        "tags": ["digital", "physical"],
+        "description": "A business card circuit board.",
+        "page": "pcb_business_card"
+    },
+    {
         "imgSrc": "/images/projects/virtue/title.png",
         "title": "VIRTUE",
         "date": "2024",
@@ -40,8 +56,7 @@
         "title": "Kroka Collaboration",
         "date": "2023",
         "tags": ["physical", "experiential"],
-        "description": "A client-based design project for the Kroka Wilderness School in Marlow, New Hampshire",
-        "page": "kroka_collab"
+        "description": "A client-based design project for the Kroka Wilderness School in Marlow, New Hampshire"
     },
     {
         "imgSrc": "https://d20kqt4x4odakd.cloudfront.net/unsafe/2400x1350/filters:quality(100):rotate(0)/nuvu-camera-sync-production/cambridge/6abddafdba0e437105fa17133a8f734078405eb9b31ff2b8183b4870b21778d5/IMG_0054_1.JPG",

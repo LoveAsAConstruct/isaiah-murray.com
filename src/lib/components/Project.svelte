@@ -28,13 +28,20 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease-in-out;
     border-radius: 5px;
     font: 17px Inter, sans-serif;
   }
 
+  .hover-scale {
+    outline-color: #CA9679;
+    outline-width: 4px;
+    outline-style: solid;
+  }
+
   .hover-scale:hover {
     transform: scale(1.05); /* Scales up on hover */
+    outline-color: #030302;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Shadow simulates rising */
   }
 
