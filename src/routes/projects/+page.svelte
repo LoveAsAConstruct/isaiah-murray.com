@@ -4,7 +4,6 @@
   import defaultProjects from '$lib/default_projects.json';
 
   let projects = defaultProjects.map(proj => ({
-    id: proj.url,
     title: proj.title,
     category: proj.tags,
     description: proj.description,

@@ -1,8 +1,9 @@
 <script>
   export let project;
+  let hasPage = project.page !== null;
 </script>
 
-<div class="project-card">
+<div class="project-card {hasPage ? 'hover-scale' : ''}">
   <div class="image-container">
     <img class="project-image" src="{project.image}" alt="{project.title}">
     <div class="overlay">
@@ -32,12 +33,11 @@
     font: 17px Inter, sans-serif;
   }
 
-  .project-card:hover {
+  .hover-scale:hover {
     transform: scale(1.05); /* Scales up on hover */
     box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Shadow simulates rising */
   }
 
-  
   .image-container {
     position: relative;
     height: 100%;
