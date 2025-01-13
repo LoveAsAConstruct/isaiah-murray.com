@@ -106,8 +106,6 @@
                 </div>
             </div>
             <hr>
-            <h1>Conclusion</h1>
-            <p>This project is still in progress. I don’t have a good conclusion yet…</p>
             <figure class="bookmark">
                 <img src="https://github.com/fluidicon.png" alt="GitHub Logo">
                 <div>
