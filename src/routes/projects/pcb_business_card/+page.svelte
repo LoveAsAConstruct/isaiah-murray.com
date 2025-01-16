@@ -1,11 +1,11 @@
 <script>
     import projectPageStyles from '$lib/styles/project-page-notion.css?url';
-  </script>
-  
-  <svelte:head>
+</script>
+
+<svelte:head>
     <link rel="stylesheet" href="{projectPageStyles}">
     <title>PCB Business Card</title>
-  </svelte:head>
+</svelte:head>
 
 <main>
 <body>

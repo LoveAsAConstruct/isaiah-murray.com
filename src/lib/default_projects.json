@@ -1,5 +1,13 @@
 [
     {
+        "imgSrc": "images/projects/clasp/image.jpg",
+        "title": "Clasp",
+        "date": "2024",
+        "tags": ["digital", "physical"],
+        "description": "A BLE device designed to encourage physical social interactions",
+        "page": "clasp"
+    },
+    {
         "imgSrc": "images/projects/radar_calibration/image.png",
         "title": "Radar Calibration",
         "date": "2024",
