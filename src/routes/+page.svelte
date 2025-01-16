@@ -1,5 +1,27 @@
 <script>
+    
     import Entry from "$lib/components/entry.svelte";
+    import FeaturedProject from "$lib/components/ThreeProject.svelte";
+    import InteractiveCube from '$lib/components/InteractiveCube.svelte';
+
+    let sideFiles = [
+        '/assets/side1.glb',
+        '/assets/side2.glb',
+        '/assets/side3.glb',
+        '/assets/side4.glb',
+        '/assets/side5.glb',
+        '/assets/side6.glb'
+    ];
+
+    let sideLinks = [
+        'https://example.com/page1',
+        'https://example.com/page2',
+        'https://example.com/page3',
+        'https://example.com/page4',
+        'https://example.com/page5',
+        'https://example.com/page6'
+    ];
+    console.log("Script init page")
 </script>
 
 <div class="header-container">
@@ -7,6 +29,17 @@
     <div class="name-container">
         <h1>Isaiah Murray</h1>
         <sub>Student at <a href="https://cambridge.nuvustudio.com/">Nuvu Innovation School</a></sub>
+    </div>
+    <div class="featured-container"> 
+        <InteractiveCube></InteractiveCube>
+        <!--
+        <div class="project-tiles">
+            <FeaturedProject name="Clasp" image_link = "/images/projects/clasp/image.jpg"></FeaturedProject>
+            <FeaturedProject name="PCB Business Card" image_link = "/images/projects/pcb_card/IMG_4365.jpeg"></FeaturedProject>
+            <FeaturedProject name="Psankeybot" image_link = "/images/projects/egg_lathe/413E6CA7-410C-4811-B012-0264FC44B8B6_1_105_c.jpeg"></FeaturedProject>
+            <FeaturedProject name="Pinhole Camera" image_link = "https://d20kqt4x4odakd.cloudfront.net/unsafe/1348x0/filters:quality(100):rotate(90)/4jkv6c88aftreqie8e2ohfzrz4pv"></FeaturedProject>
+        </div>
+        -->
     </div>
 </div>
 
@@ -33,6 +66,27 @@
 </div>
 
 <style>
+    .featured-container {
+        position: absolute;
+        right: 50px;
+        bottom: 50px;
+        width: 50%;
+        top: 50px;
+        display: flex;
+        justify-content: center; /* Center the content within the container */
+        align-items: center; /* Center content vertically */
+        padding: 1rem;
+    }
+
+
+    .project-tiles {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 equal-width columns */
+        gap: 1rem; /* Spacing between grid items */
+        width: 100%; /* Make it fill the width of the parent */
+        height: 100%; /* Adjust height to fit content */
+    }
+
     .content-container h1 {
         margin-bottom: 10px;
         margin-top: 40px;

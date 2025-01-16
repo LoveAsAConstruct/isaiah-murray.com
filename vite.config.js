@@ -1,6 +1,13 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
 
-export default defineConfig({
-	plugins: [sveltekit()]
-});
+export default {
+  plugins: [sveltekit()],
+  server: {
+    strictPort: true, // Ensure the port is fixed for stability
+  },
+  resolve: {
+    alias: {
+      $lib: '/src/lib', // Adjust paths as needed
+    },
+  },
+};
