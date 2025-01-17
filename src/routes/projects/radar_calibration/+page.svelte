@@ -1,10 +1,11 @@
-<head>
-	<meta
-			http-equiv="Content-Type"
-			content="text/html; charset=utf-8"
-		/><title>Radar Calibration 31C</title>
-		<link rel="stylesheet" href="$lib/styles/project-page-notion.css">
-</head>
+<script>
+	import projectPageStyles from '$lib/styles/project-page-notion.css?url';
+  </script>
+  
+  <svelte:head>
+	<link rel="stylesheet" href="{projectPageStyles}">
+	<title>Radar Calibration</title>
+  </svelte:head>
 	<body>
 		<img
 					class="page-cover-image"

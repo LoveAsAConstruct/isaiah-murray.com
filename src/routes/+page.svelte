@@ -113,6 +113,7 @@
     .header-image {
         object-fit: cover;
         width: 100%;
+        max-height: 45vh;
         height: auto;
     }
 
