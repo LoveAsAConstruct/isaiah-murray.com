@@ -1,45 +1,244 @@
 <script>
-    
-    import Entry from "$lib/components/entry.svelte";
-    import FeaturedProject from "$lib/components/ThreeProject.svelte";
-    import InteractiveCube from '$lib/components/InteractiveCube.svelte';
-
-    let sideFiles = [
-        '/assets/side1.glb',
-        '/assets/side2.glb',
-        '/assets/side3.glb',
-        '/assets/side4.glb',
-        '/assets/side5.glb',
-        '/assets/side6.glb'
-    ];
-
-    let sideLinks = [
-        'https://example.com/page1',
+    import { onMount, onDestroy } from 'svelte';
+    import Entry from '$lib/components/entry.svelte';
+    import { Light } from 'three';
+  
+    console.log("Script init page");
+  
+    // Shared references so we can clean up later
+    let scene, camera, renderer, controls, raycaster, mouse;
+    let clickableObjects = [];
+  
+    // We'll call this once we're in the browser (onMount)
+    async function initThree(THREE, OrbitControls, GLTFLoader) {
+      // Get our container from the DOM
+      const container = document.getElementById('three-container');
+      if (!container) {
+        console.error("No #three-container found in DOM");
+        return;
+      }
+  
+      // Create scene
+      scene = new THREE.Scene();
+  
+      // Create camera
+      camera = new THREE.PerspectiveCamera(
+        75,
+        container.offsetWidth / container.offsetHeight,
+        0.1,
+        1000
+      );
+      camera.position.set(1.5, 1.5, 3); // a bit off-center so we can see the cube well
+  
+      // Create renderer with alpha for a transparent background
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(container.offsetWidth, container.offsetHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      // Make background fully transparent
+      renderer.setClearColor(0x000000, 0);
+  
+      container.appendChild(renderer.domElement);
+  
+      // Set up orbit controls
+      controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;     // smooth orbit
+      controls.dampingFactor = 0.1;
+      controls.enablePan = false;        // optional, disable panning
+      controls.enableZoom = true;        // allow zoom
+      controls.autoRotate = false;       // you can enable auto rotate if you like
+  
+      // Raycaster for click detection
+      raycaster = new THREE.Raycaster();
+      mouse = new THREE.Vector2();
+  
+      // EVENT: When user clicks on the canvas, do a raycast
+      renderer.domElement.addEventListener('click', onCanvasClick);
+  
+      // 1) Add a smaller base red cube (0.9 side) at the center
+      const baseGeom = new THREE.BoxGeometry(0.9, 0.9, 0.9);
+      const baseMat = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+      const baseCube = new THREE.Mesh(baseGeom, baseMat);
+      scene.add(baseCube);
+  
+      // 2) Load six planes around it
+      const sideFiles = [
+        '/plane-egg-lathe.glb',    // front
+        '/plane-back.glb',     // back
+        '/plane-top.glb',      // top
+        '/plane-bottom.glb',   // bottom
+        '/plane-right.glb',    // right
+        '/plane-left.glb'      // left
+      ];
+  
+      const sideLinks = [
+        '/projects/egg-lathe',
         'https://example.com/page2',
         'https://example.com/page3',
         'https://example.com/page4',
         'https://example.com/page5',
         'https://example.com/page6'
-    ];
-    console.log("Script init page")
-</script>
+      ];
+  
+      // Plane positions/rotations so they form a cube when each plane
+      // originally has +Z as its normal in object space
+      const positions = [
+        new THREE.Vector3(0, 0, +0.5),  // Front face
+        new THREE.Vector3(0, 0, -0.5),  // Back face
+        new THREE.Vector3(0, +0.5, 0),  // Top face
+        new THREE.Vector3(0, -0.5, 0),  // Bottom face
+        new THREE.Vector3(+0.5, 0, 0),  // Right face
+        new THREE.Vector3(-0.5, 0, 0)   // Left face
+      ];
+      // For planes that have +Z up, we rotate them to the correct face orientation:
+      const rotations = [
+        // Front: +Y -> +Z   rotateX(+90°)
+        new THREE.Euler(Math.PI / 2, 0, 0),
 
+        // Back: +Y -> -Z    rotateX(-90°)
+        new THREE.Euler(-Math.PI / 2, 0, 0),
+
+        // Top: +Y -> +Y     no rotation
+        new THREE.Euler(0, 0, 0),
+
+        // Bottom: +Y -> -Y  rotateX(180°)
+        new THREE.Euler(Math.PI, 0, 0),
+
+        // Right: +Y -> +X   rotateZ(-90°)
+        new THREE.Euler(0, 0, -Math.PI / 2),
+
+        // Left: +Y -> -X    rotateZ(+90°)
+        new THREE.Euler(0, 0, Math.PI / 2)
+    ];
+      // Default fallback material if a GLB fails
+      const defaultMat = new THREE.MeshStandardMaterial({
+        color: 0xcccccc,
+        side: THREE.DoubleSide
+      });
+  
+      // Instantiate the loader
+      const loader = new GLTFLoader();
+  
+      // Helper to load each plane
+      function loadSide(file, position, rotation, url) {
+        loader.load(
+            file,
+            (gltf) => {
+                // We assume the plane is the first child in gltf.scene
+                const planeMesh = gltf.scene.children[0];
+                planeMesh.position.copy(position);
+                planeMesh.rotation.set(rotation.x, rotation.y, rotation.z);
+                scene.add(planeMesh);
+                clickableObjects.push({ object: planeMesh, url });
+            },
+            undefined,
+            () => {
+                console.warn(`Failed to load ${file}. Using fallback plane.`);
+                // By default, PlaneGeometry normal = +Z in Three.js
+                // We'll rotate it so that +Z becomes +Y (to match Blender's plane)
+                const geometry = new THREE.PlaneGeometry(1, 1);
+                geometry.rotateX(-Math.PI / 2); // now normal = +Y
+
+                const fallbackPlane = new THREE.Mesh(geometry, defaultMat);
+                fallbackPlane.position.copy(position);
+                fallbackPlane.rotation.set(rotation.x, rotation.y, rotation.z);
+                scene.add(fallbackPlane);
+                clickableObjects.push({ object: fallbackPlane, url });
+            }
+        );
+    }
+
+    var lightGroup = new THREE.Group()
+
+    camera.add(lightGroup)
+
+    var light = new THREE.Light()
+    var ambientlight = new THREE.AmbientLight(0xffffff, 0.5)
+    lightGroup.add(ambientlight)
+
+    var sphereLight = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+    light.position.set(0,2,0)
+    lightGroup.add(light)
+    lightGroup.add(sphereLight)
+    
+      // Load each of the 6 planes
+      sideFiles.forEach((file, i) => {
+        loadSide(file, positions[i], rotations[i], sideLinks[i]);
+      });
+      
+      // Start the render loop
+      animate();
+  
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();               // must update for damping to work
+        renderer.render(scene, camera);
+      }
+    }
+  
+    /**
+     * Raycast on the plane(s) when user clicks the canvas
+     */
+    function onCanvasClick(event) {
+      if (!raycaster || !camera) return; // safety check
+  
+      // Convert mouse coords to normalized device coords
+      const rect = event.target.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      const y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+  
+      mouse.set(x, y);
+  
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(clickableObjects.map(o => o.object));
+      if (intersects.length > 0) {
+        const hit = intersects[0].object;
+        const side = clickableObjects.find(s => s.object === hit);
+        if (side && side.url) {
+          window.location.href = side.url;
+        }
+      }
+    }
+  
+    /**
+     * Svelte lifecycle: onMount is only in the browser after SSR
+     */
+    onMount(async () => {
+      console.log("onMount triggered");
+  
+      // Dynamically import Three.js modules so SSR doesn't break
+      const THREE = await import('three');
+      const { OrbitControls } = await import('three/examples/jsm/controls/OrbitControls.js');
+      const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader.js');
+  
+      // Now we can safely reference 'window', 'document', etc.
+      initThree(THREE, OrbitControls, GLTFLoader);
+    });
+  
+    /**
+     * Cleanup if user navigates away in the browser
+     */
+    onDestroy(() => {
+      console.log("onDestroy triggered");
+  
+      if (renderer) {
+        // remove the click listener from the canvas
+        renderer.domElement.removeEventListener('click', onCanvasClick);
+        renderer.dispose();
+      }
+    });
+  </script>
+  
+  
+  
 <div class="header-container">
-    <img class="header-image" src="/images/v11_47.png">
+    <img class="header-image" src="$lib/images/siteheader.png">
     <div class="name-container">
         <h1>Isaiah Murray</h1>
         <sub>Student at <a href="https://cambridge.nuvustudio.com/">Nuvu Innovation School</a></sub>
     </div>
     <div class="featured-container"> 
-        <InteractiveCube></InteractiveCube>
-        <!--
-        <div class="project-tiles">
-            <FeaturedProject name="Clasp" image_link = "/images/projects/clasp/image.jpg"></FeaturedProject>
-            <FeaturedProject name="PCB Business Card" image_link = "/images/projects/pcb_card/IMG_4365.jpeg"></FeaturedProject>
-            <FeaturedProject name="Psankeybot" image_link = "/images/projects/egg_lathe/413E6CA7-410C-4811-B012-0264FC44B8B6_1_105_c.jpeg"></FeaturedProject>
-            <FeaturedProject name="Pinhole Camera" image_link = "https://d20kqt4x4odakd.cloudfront.net/unsafe/1348x0/filters:quality(100):rotate(90)/4jkv6c88aftreqie8e2ohfzrz4pv"></FeaturedProject>
-        </div>
-        -->
+        <!--<InteractiveCube></InteractiveCube>-->
+        <div id="three-container"></div>
     </div>
 </div>
 
@@ -66,16 +265,22 @@
 </div>
 
 <style>
+    #three-container {
+        height: 100%;
+        aspect-ratio: 1;
+        border: 2px solid red;
+        background-color: white;
+    }
     .featured-container {
         position: absolute;
         right: 50px;
         bottom: 50px;
-        width: 50%;
+        aspect-ratio: 1;
         top: 50px;
         display: flex;
         justify-content: center; /* Center the content within the container */
         align-items: center; /* Center content vertically */
-        padding: 1rem;
+        padding: 0;
     }
 
 
@@ -113,7 +318,7 @@
     .header-image {
         object-fit: cover;
         width: 100%;
-        height: auto;
+        height: 50vh;
     }
 
     .header-container {

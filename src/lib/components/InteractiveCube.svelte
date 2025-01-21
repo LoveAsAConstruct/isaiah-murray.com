@@ -141,14 +141,12 @@
 
 <style>
     .three-container {
-        width: 1000px;
-        height: 1000px;
-        border: 2px solid red;
+        height: 100%;
+        aspect-ratio: 1;
+        border: 2px solid blue;
         position: relative;
     }
 </style>
-
-<div>InteractiveCube component loaded</div>
 
 <!-- Assign an ID to the container div -->
 <div id="three-container" class="three-container"></div>
