@@ -1,7 +1,7 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
     import Entry from '$lib/components/entry.svelte';
-    import { Light } from 'three';
+    import { Light, MeshStandardMaterial } from 'three';
   
     console.log("Script init page");
   
@@ -28,7 +28,7 @@
         0.1,
         1000
       );
-      camera.position.set(1.5, 1.5, 3); // a bit off-center so we can see the cube well
+      camera.position.set(0, 0, 2); // a bit off-center so we can see the cube well
   
       // Create renderer with alpha for a transparent background
       renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -36,7 +36,8 @@
       renderer.setPixelRatio(window.devicePixelRatio);
       // Make background fully transparent
       renderer.setClearColor(0x000000, 0);
-  
+      renderer.shadowMap.enabled = true; // Enable shadow maps
+      renderer.shadowMap.type = THREE.BasicShadowMap;// THREE.PCFSoftShadowMap;
       container.appendChild(renderer.domElement);
   
       // Set up orbit controls
@@ -44,8 +45,8 @@
       controls.enableDamping = true;     // smooth orbit
       controls.dampingFactor = 0.1;
       controls.enablePan = false;        // optional, disable panning
-      controls.enableZoom = true;        // allow zoom
-      controls.autoRotate = false;       // you can enable auto rotate if you like
+      controls.enableZoom = false;        // allow zoom
+      controls.autoRotate = true;       // you can enable auto rotate if you like
   
       // Raycaster for click detection
       raycaster = new THREE.Raycaster();
@@ -63,8 +64,8 @@
       // 2) Load six planes around it
       const sideFiles = [
         '/plane-egg-lathe.glb',    // front
-        '/plane-back.glb',     // back
-        '/plane-top.glb',      // top
+        '/plane-clasp.glb',     // back
+        '/plane-PCBB.glb',      // top
         '/plane-bottom.glb',   // bottom
         '/plane-right.glb',    // right
         '/plane-left.glb'      // left
@@ -123,12 +124,16 @@
         loader.load(
             file,
             (gltf) => {
-                // We assume the plane is the first child in gltf.scene
-                const planeMesh = gltf.scene.children[0];
-                planeMesh.position.copy(position);
-                planeMesh.rotation.set(rotation.x, rotation.y, rotation.z);
-                scene.add(planeMesh);
-                clickableObjects.push({ object: planeMesh, url });
+              // We assume the plane is the first child in gltf.scene
+              const planeMesh = gltf.scene.children[0];
+              planeMesh.position.copy(position);
+              planeMesh.rotation.set(rotation.x, rotation.y, rotation.z);
+
+              planeMesh.receiveShadow = true; // Correct spelling
+              planeMesh.castShadow = true;   // Enable shadow casting
+
+              scene.add(planeMesh);
+              clickableObjects.push({ object: planeMesh, url });
             },
             undefined,
             () => {
@@ -141,25 +146,48 @@
                 const fallbackPlane = new THREE.Mesh(geometry, defaultMat);
                 fallbackPlane.position.copy(position);
                 fallbackPlane.rotation.set(rotation.x, rotation.y, rotation.z);
+                fallbackPlane.recieveShadow = true
+                fallbackPlane.castShadow = true
                 scene.add(fallbackPlane);
                 clickableObjects.push({ object: fallbackPlane, url });
             }
         );
     }
 
-    var lightGroup = new THREE.Group()
+    if (false) {
+      var geo = new THREE.PlaneGeometry(10,10);
+      var GP = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({color: 0xffffff, side: THREE.DoubleSide}));
+      GP.position.set(0,0,-1);
+      GP.castShadow = false;
+      GP.receiveShadow = true;
+      scene.add(GP)
+    }
 
-    camera.add(lightGroup)
 
-    var light = new THREE.Light()
-    var ambientlight = new THREE.AmbientLight(0xffffff, 0.5)
-    lightGroup.add(ambientlight)
+    // Create a group for the lights
+    var lightGroup = new THREE.Group();
 
-    var sphereLight = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
-    light.position.set(0,2,0)
-    lightGroup.add(light)
-    lightGroup.add(sphereLight)
+    // Add the light group to the camera so it stays relative to it
+    scene.add(lightGroup);
+
+    // Create an ambient light and add it to the group
+    var ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
+    lightGroup.add(ambientLight);
+
+    // Create a point light and add it to the group
+    var pointLight = new THREE.PointLight(0xffffff, 5);
+    pointLight.castShadow = true; // Enable shadow casting
+
+    pointLight.shadow.mapSize.width = 1024; // Higher resolution shadow map
+    pointLight.shadow.mapSize.height = 1024;
+    pointLight.shadow.camera.near = 0.1; // Adjust based on your scene
+    pointLight.shadow.camera.far = 25;
+
+    pointLight.position.set(0, 2, 1); // Position relative to the camera
+    lightGroup.add(pointLight);
     
+
+
       // Load each of the 6 planes
       sideFiles.forEach((file, i) => {
         loadSide(file, positions[i], rotations[i], sideLinks[i]);
@@ -169,6 +197,8 @@
       animate();
   
       function animate() {
+        lightGroup.position.copy(camera.position);
+        lightGroup.rotation.copy(camera.rotation);
         requestAnimationFrame(animate);
         controls.update();               // must update for damping to work
         renderer.render(scene, camera);
@@ -268,8 +298,8 @@
     #three-container {
         height: 100%;
         aspect-ratio: 1;
-        border: 2px solid red;
-        background-color: white;
+        border: 2px solid transparent;
+        background-color: transparent;
     }
     .featured-container {
         position: absolute;
