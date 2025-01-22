@@ -1,14 +1,29 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
     import Entry from '$lib/components/entry.svelte';
-    import { Light, MeshStandardMaterial } from 'three';
-  
+    import { Light, MeshStandardMaterial, MeshToonMaterial } from 'three';
+    import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+    import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+    import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+    import { OutlinePass } from 'three/addons/postprocessing/OutlinePass.js';
+    import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+    import { FXAAShader } from 'three/addons/shaders/FXAAShader.js';
     console.log("Script init page");
   
     // Shared references so we can clean up later
     let scene, camera, renderer, controls, raycaster, mouse;
     let clickableObjects = [];
-  
+    let selectedObjects = [];
+    let composer, effectFXAA, outlinePass;
+    const params = {
+        edgeStrength: 3.0,
+        edgeGlow: 0.0,
+        edgeThickness: 1.0,
+        pulsePeriod: 0,
+        rotate: false,
+        usePatternTexture: false
+    };
+    
     // We'll call this once we're in the browser (onMount)
     async function initThree(THREE, OrbitControls, GLTFLoader) {
       // Get our container from the DOM
@@ -195,7 +210,71 @@
 
     pointLight.position.set(0, 2, 1); // Position relative to the camera
     lightGroup.add(pointLight);
+    renderer.domElement.addEventListener( 'pointermove', onPointerMove );
+    //postprocessing
+
+    composer = new EffectComposer( renderer );
+    const renderPass = new RenderPass( scene, camera );
+    composer.addPass( renderPass );
+
+    outlinePass = new OutlinePass( new THREE.Vector2( window.innerWidth, window.innerHeight ), scene, camera );
+    composer.addPass( outlinePass );
+
+    const textureLoader = new THREE.TextureLoader();
+    textureLoader.load( 'textures/tri_pattern.jpg', function ( texture ) {
+
+        outlinePass.patternTexture = texture;
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+
+    } );
+
+    function onPointerMove( event ) {
+
+        if ( event.isPrimary === false ) return;
+
+        const rect = event.target.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        const y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
     
+        mouse.set(x, y);
+
+        checkIntersection();
+
+    }
+
+    function addSelectedObject( object ) {
+
+        selectedObjects = [];
+        selectedObjects.push( object );
+
+    }
+    function checkIntersection() {
+
+        raycaster.setFromCamera( mouse, camera );
+
+        const intersects = raycaster.intersectObject( scene, true );
+        console.log(intersects)
+        if ( intersects.length > 0 ) {
+
+            const selectedObject = intersects[ 0 ].object;
+            addSelectedObject( selectedObject );
+            outlinePass.selectedObjects = selectedObjects;
+
+        } else {
+
+            // outlinePass.selectedObjects = [];
+
+        }
+
+    }
+
+    const outputPass = new OutputPass();
+    composer.addPass( outputPass );
+
+    effectFXAA = new ShaderPass( FXAAShader );
+    effectFXAA.uniforms[ 'resolution' ].value.set( 1 / window.innerWidth, 1 / window.innerHeight );
+    composer.addPass( effectFXAA );
 
 
       // Load each of the 6 planes
@@ -211,7 +290,8 @@
         lightGroup.rotation.copy(camera.rotation);
         requestAnimationFrame(animate);
         controls.update();               // must update for damping to work
-        renderer.render(scene, camera);
+        //renderer.render(scene, camera);
+        composer.render();
       }
     }
   
