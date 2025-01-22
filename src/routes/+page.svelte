@@ -72,12 +72,12 @@
       ];
   
       const sideLinks = [
-        '/projects/egg-lathe',
-        'https://example.com/page2',
-        'https://example.com/page3',
+        '/projects/egg_lathe',
+        '/projects/clasp',
+        '/projects/pcb_business_card',
         'https://example.com/page4',
         'https://example.com/page5',
-        'https://example.com/page6'
+        '/projects/egg_lathe'
       ];
   
       // Plane positions/rotations so they form a cube when each plane
@@ -111,7 +111,7 @@
         new THREE.Euler(0, 0, Math.PI / 2)
     ];
       // Default fallback material if a GLB fails
-      const defaultMat = new THREE.MeshStandardMaterial({
+      const defaultMat = new THREE.MeshToonMaterial({
         color: 0xcccccc,
         side: THREE.DoubleSide
       });
@@ -124,16 +124,26 @@
         loader.load(
             file,
             (gltf) => {
-              // We assume the plane is the first child in gltf.scene
-              const planeMesh = gltf.scene.children[0];
-              planeMesh.position.copy(position);
-              planeMesh.rotation.set(rotation.x, rotation.y, rotation.z);
+                // We assume the plane is the first child in gltf.scene
+                const planeMesh = gltf.scene.children[0];
+                planeMesh.position.copy(position);
+                planeMesh.rotation.set(rotation.x, rotation.y, rotation.z);
 
-              planeMesh.receiveShadow = true; // Correct spelling
-              planeMesh.castShadow = true;   // Enable shadow casting
+                planeMesh.receiveShadow = true; // Correct spelling
+                planeMesh.castShadow = true;   // Enable shadow casting
 
-              scene.add(planeMesh);
-              clickableObjects.push({ object: planeMesh, url });
+                scene.add(planeMesh);
+
+                const geometry = new THREE.PlaneGeometry(1, 1);
+                geometry.rotateX(-Math.PI / 2);
+
+                const clickPlane = new THREE.Mesh(geometry, THREE.MeshBasicMaterial({color: 0xff0000}));
+                clickPlane.position.copy(position);
+                clickPlane.rotation.set(rotation.x, rotation.y, rotation.z);
+                clickPlane.recieveShadow = false
+                clickPlane.castShadow = false
+                scene.add(clickPlane);
+                clickableObjects.push({ object: clickPlane, url });
             },
             undefined,
             () => {
@@ -175,7 +185,7 @@
     lightGroup.add(ambientLight);
 
     // Create a point light and add it to the group
-    var pointLight = new THREE.PointLight(0xffffff, 5);
+    var pointLight = new THREE.PointLight(0xffffff, 20);
     pointLight.castShadow = true; // Enable shadow casting
 
     pointLight.shadow.mapSize.width = 1024; // Higher resolution shadow map
